@@ -17,6 +17,8 @@ export async function login(credentials) {
     return getUser()
 }
 
+
+
 export function getToken() {
     // getItem return null if there's no string
     const token = localStorage.getItem('token')
