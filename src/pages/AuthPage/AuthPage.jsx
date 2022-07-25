@@ -1,7 +1,8 @@
 import { useState } from "react";
 // import './AuthPage.css';
 // import LoginForm from "../../components/LoginForm/LoginForm";
-// import SignUpForm from "../../components/SignUpForm/SignUpForm";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
 // import Logo from "../../components/Logo/Logo";
 
 export default function AuthPage({ setUser }) {
@@ -10,8 +11,8 @@ export default function AuthPage({ setUser }) {
   return (
       <main>
       <h1>AuthPage</h1>
-      {/* <SignUpForm setUser={setUser} />
-      <LoginForm setUser={setUser} /> */}
+      <SignUpForm setUser={setUser} />
+      <LoginForm setUser={setUser} /> 
     </main>
 
     //testing so only signup or login show

@@ -11,7 +11,7 @@ import TripIndexPage from "../TripIndexPage/TripIndexPage";
 
 
 export default function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
 
 
