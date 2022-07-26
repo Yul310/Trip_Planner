@@ -1,9 +1,17 @@
+import Maps from '../../components/Maps/Maps';
 
 export default function NewTripPage() {
+
+
+
+
+
     return (
 
         <div>
-            <h1>New Trip</h1>
+        <Maps/>
+        <h3>New Trip</h3>
+      
         </div>
 
         )
