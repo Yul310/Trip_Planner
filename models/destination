@@ -13,8 +13,8 @@ const destinationSchema = new Schema(
     distance:{
         type: Number
     },
-    duration:{
-        type: Number
+    time:{
+        type: date
     },
     note: {
       type: String,

@@ -1,24 +1,17 @@
-const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
-
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 //-- Model ---------------------------------------------//
 
-const trip = new Schema(
+const tripSchema = new Schema(
   {
     title: {
     type: String,
     required: true,
     },
-    date: Date,
-    hours: {
-        type: Number, required: true, min: 0, max: 23
-    },
-    minutes: {
-        type: Number, required: true, min: 0, max: 59
-    },
-    destinations:{
-    type: Schema.Types.ObjectId, ref: "Destination" 
+    date: Date, 
+    time: {
+        type:Date
     },
     note: {
     type: String
@@ -29,8 +22,4 @@ const trip = new Schema(
   }
 );
 
-// make category model
-const Trip = model("Trip", tripSchema);
-
-//-- Export Model ---------------------------------------------//
-module.exports = Trip;
+module.exports = mongoose.model("Trip", tripSchema);
