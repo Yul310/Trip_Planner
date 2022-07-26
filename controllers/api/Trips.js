@@ -22,8 +22,9 @@ module.exports = {
 
 // create new todos
 async function create(req, res) {
+    console.log("Controller 1")
   try {
-    console.log("Controller")
+    console.log("Controller 2")
     const newTrip = await Trip.create(req.body);
     const tripList = await Trip.find({});
     tripList.push(newTrip)

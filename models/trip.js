@@ -11,10 +11,13 @@ const tripSchema = new Schema(
     },
     date: Date, 
     time: {
-        type:Date
+        type:String
     },
     note: {
     type: String
+    },
+    destination: {
+      type: Schema.Types.ObjectId, ref: "destination"
     }
   },
   {
