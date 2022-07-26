@@ -1,6 +1,6 @@
 
-import React, {useState, useCallback, useEffect,useRef} from 'react'
-import { GoogleMap, useJsApiLoader,useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
+import {useState, useCallback, useEffect,useRef} from 'react'
+import { GoogleMap, useJsApiLoader,useLoadScript, MarkerF, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
 import "./Map.css"
 import MapStyles from './MapStyles'
 
@@ -21,6 +21,7 @@ const [map, setMap] = useState(null)
 const [directionsResponse, setDirectionsResponse] = useState(null)
 const [distance, setDistance] = useState('')
 const [duration, setDuration] = useState('')
+const userMarker = "./images/abc.png"
 
 /** @type React.MutableRefObject<HTMLInputElement> */
 const originRef = useRef()
@@ -32,7 +33,6 @@ const API_KEY = process.env.REACT_APP_MAPS_API_KEY
     
 const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
-    // version: "weekly",
     googleMapsApiKey: API_KEY,
     // libraries: ['places'],
     
@@ -92,11 +92,12 @@ return (
           onLoad={(map) => setMap(map)}
            >
 
-           <Marker
-           position = {center}
-           icon={{
-            scaledSize: new window.google.maps.Size(25, 35)
-          }}
+           <MarkerF
+           position={center}
+          //  icon={{
+          //   url: userMarker,
+          //   scaledSize: new window.google.maps.Size(25, 35)
+          // }}
            />
            
            </GoogleMap>
