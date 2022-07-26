@@ -17,6 +17,8 @@ export default function NavBar({setUser}) {
       <Link to="/trips">My Trips</Link>
       &nbsp; | &nbsp;
       <Link to="/trips/new">New Trip</Link>
+      &nbsp; | &nbsp;
+      <Link to="/trips/destination">Set Destination</Link>
       <Link
                   to=""
                   onClick={handleLogOut}

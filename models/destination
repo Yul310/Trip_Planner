@@ -1,0 +1,32 @@
+const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
+
+
+//-- Model ---------------------------------------------//
+
+const destinationSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    distance:{
+        type: Number
+    },
+    duration:{
+        type: Number
+    },
+    note: {
+      type: String,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+// make category model
+const Destination = model("Destination", destinationSchema);
+
+//-- Export Model ---------------------------------------------//
+module.exports = Destination;

@@ -1,6 +1,6 @@
 
 import {useState, useCallback, useEffect,useRef} from 'react'
-import { GoogleMap, useJsApiLoader,useLoadScript, MarkerF, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
 import "./Map.css"
 import MapStyles from './MapStyles'
 
@@ -17,7 +17,7 @@ const center = { lat: 48.8584, lng: 2.2945 }
 
 export default function Maps() {
 
-const [map, setMap] = useState(null) 
+const [map, setMap] = useState(/** @type google.maps.Map */ (null))
 const [directionsResponse, setDirectionsResponse] = useState(null)
 const [distance, setDistance] = useState('')
 const [duration, setDuration] = useState('')
@@ -34,7 +34,7 @@ const API_KEY = process.env.REACT_APP_MAPS_API_KEY
 const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: API_KEY,
-    // libraries: ['places'],
+    libraries: ['places'],
     
   })
 // const {isLoaded} = useLoadScript({
@@ -49,12 +49,12 @@ async function calculateRoute() {
   if (originRef.current.value === '' || destiantionRef.current.value === '') {
     return
   }
-  // eslint-disable-next-line no-undef
+ 
   const directionsService = new google.maps.DirectionsService()
   const results = await directionsService.route({
     origin: originRef.current.value,
     destination: destiantionRef.current.value,
-    // eslint-disable-next-line no-undef
+   
     travelMode: google.maps.TravelMode.DRIVING,
   })
   setDirectionsResponse(results)
@@ -75,6 +75,28 @@ function clearRoute() {
 
 return (
 
+
+
+  <>
+  <div className=" flex flex-row items-center justify-evenly">
+  <Autocomplete className="m-0 p-0">
+  <input type="text" placeholder = 'Origin' ref={originRef} className="w-60 h-8"/>
+  </Autocomplete>
+  <Autocomplete className="m-0 p-0">
+  <input type="text" placeholder = 'Destination' ref={destiantionRef} className="w-60 h-8"/>
+  </Autocomplete>
+
+  <button type="submit" onClick={calculateRoute} className="w-60 h-8 bg-green-500 m-0 p-0" >ShowRoute</button>
+ 
+  </div>
+
+  <div className=" flex w-200 h-8 flex-row  justify-evenly ">
+  <h3>Distance: {distance} </h3>
+  <h3>Duration: {duration} </h3>
+  </div>
+ 
+
+
         
 
            < GoogleMap 
@@ -94,15 +116,14 @@ return (
 
            <MarkerF
            position={center}
-          //  icon={{
-          //   url: userMarker,
-          //   scaledSize: new window.google.maps.Size(25, 35)
-          // }}
            />
+           {directionsResponse && (
+            <DirectionsRenderer directions={directionsResponse} />
+          )}
            
            </GoogleMap>
            
-      
+           </>
        
         )
     }

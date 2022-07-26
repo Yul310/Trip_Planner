@@ -5,6 +5,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { useState,useRef } from 'react';
 import { Routes,Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
+import NewDestinationPage from "../NewDestinationPage/NewDestinationPage";
 import NewTripPage from "../NewTripPage/NewTripPage";
 import TripIndexPage from "../TripIndexPage/TripIndexPage";
 
@@ -30,6 +31,7 @@ export default function App() {
       />
       <Routes>
         <Route path="/trips/new" element={<NewTripPage />} />
+        <Route path="/trips/destination" element={<NewDestinationPage />} />
         <Route path="/trips" element={<TripIndexPage />} />
       </Routes>
       </div>
