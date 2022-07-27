@@ -1,22 +1,21 @@
 const Trip = require('../../models/trip');
 
-
-
-
 module.exports = {
 
   create,
+  index
 
 };
 
-// async function index(req, res) {
-//   try {
-//     const tripList = await Todo.find({}).populate('destination').exec();
-//     res.json(tripList);
-//   } catch {
-//     res.status(400).json('Bad Serverside')
-//   }
-// }
+async function index(req, res) {
+  try {
+    console.log("index controller!!!")
+    const tripList = await Trip.find({}).populate('destination').exec();
+    res.json(tripList);
+  } catch {
+    res.status(400).json('Bad Serverside')
+  }
+}
 
 
 

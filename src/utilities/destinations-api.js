@@ -1,6 +1,6 @@
 import { getToken } from "./users-service";
 
-const BASE_URL = "/api/trips";
+const BASE_URL = "/api/destinations";
 
 
 export function getAll() {
@@ -8,8 +8,8 @@ export function getAll() {
   }
 
 // create a new trip
-export function newTrip(tripData) {
-    return sendRequest(`${BASE_URL}/newTrip`, "POST", tripData);
+export function newDestination(destinationData) {
+    return sendRequest(`${BASE_URL}/newDestination`, "POST", destinationData);
   }
 
 

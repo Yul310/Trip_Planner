@@ -6,15 +6,19 @@ const { Schema, model } = mongoose;
 
 const destinationSchema = new Schema(
   {
-    title: {
+    origin: {
+      type: String,
+      required: true,
+    },
+    destination: {
       type: String,
       required: true,
     },
     distance:{
-        type: Number
+        type: String,
     },
     time:{
-        type: date
+        type:String,
     },
     note: {
       type: String,
@@ -26,7 +30,5 @@ const destinationSchema = new Schema(
 );
 
 // make category model
-const Destination = model("Destination", destinationSchema);
 
-//-- Export Model ---------------------------------------------//
-module.exports = Destination;
+module.exports = mongoose.model("Destination", destinationSchema);

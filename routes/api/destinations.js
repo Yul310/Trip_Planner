@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const tripsCtrl = require('../../controllers/api/Trips');
+const destinationsCtrl = require('../../controllers/api/Destinations');
 
 // GET /api/todos
-router.get('/', tripsCtrl.index);
+router.get('/', destinationsCtrl.index);
 
 //POST /api/todos/new
-router.post('/newTrip', tripsCtrl.create);
+router.post('/newDestination', destinationsCtrl.create);
 
 // // POST /api/todos
 // router.put("/editTrip/:id", tripsCtrl.editTodo);
