@@ -1,13 +1,12 @@
 import Maps from '../../components/Maps/Maps';
-import MapForm from '../../components/MapForm/MapForm';
 
-export default function NewDestinationPage() {
+export default function NewDestinationPage({setUpdated, allTrips, allPlaces}) {
 
     return (
 
         <div>
-        <MapForm/>
-        <Maps/>
+       
+        <Maps allPlaces={allPlaces}/>
         <h3>New Trip</h3>
       
         </div>

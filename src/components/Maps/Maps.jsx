@@ -1,9 +1,10 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { GoogleMap, useJsApiLoader, MarkerF, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF, Autocomplete, DirectionsRenderer, InfoWindow, Marker } from '@react-google-maps/api';
 import "./Map.css"
 import MapStyles from './MapStyles'
-import * as destinationAPI from "../../utilities/destinations-api";
+import * as placeAPI from "../../utilities/places-api";
+// import * as destinationAPI from "../../utilities/destinations-api";
 
 
 const containerStyle = {
@@ -13,8 +14,8 @@ const containerStyle = {
 }
 const google = window.google
 
+// const center = { lat: 48.8584, lng: 2.2945 }
 const center = { lat: 48.8584, lng: 2.2945 }
-
 
 export default function Maps() {
 
@@ -22,13 +23,20 @@ export default function Maps() {
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
   const [duration, setDuration] = useState('')
-  const userMarker = "./images/abc.png"
   const [formData, setFormData] = useState({
-    origin: "",
-    destination: "",
+    name: "",
     distance: "",
     time: "",
+    note: "",
   });
+  const [currentLocation, setCurrentLocation] = useState({
+    lat: 48.8584,
+    lng: 2.2945
+  })
+  const [destination, setDestination] = useState({
+    lat: null,
+    lng: null
+  })
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
@@ -50,6 +58,19 @@ export default function Maps() {
 
   if (!isLoaded) return <div>Loading...</div>;
 
+async function findPlace(){
+  const directionsService = new google.maps.DirectionsService()
+  const results = await directionsService.route({
+    origin: originRef.current.value,
+    destination: originRef.current.value,
+    travelMode: google.maps.TravelMode.DRIVING,
+  })
+  setFormData({ ...formData, name: results.request.origin.query})
+ console.log(formData)
+  // console.log(results.geocoded_waypoints[0].place_id)
+  console.log(results.request.origin.query)
+  placeAPI.newPlace(formData)
+}
 
   async function calculateRoute() {
     if (originRef.current.value === '' || destiantionRef.current.value === '') {
@@ -59,16 +80,20 @@ export default function Maps() {
     const directionsService = new google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
+      
       destination: destiantionRef.current.value,
 
       travelMode: google.maps.TravelMode.DRIVING,
+
     })
+    console.log(originRef.current.value)
+    console.log(results.request.origin.query)
+    console.log(results.request.destination.query)
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
-    console.log(typeof distance)
-    console.log(typeof duration)
-    setFormData({ time: duration, distance: distance });
+  
+    // setFormData({ time: duration, distance: distance });
   }
 
   function clearRoute() {
@@ -83,21 +108,22 @@ export default function Maps() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log(formData);
-    calculateRoute()
-
-    destinationAPI.newDestination(formData);
-    setFormData({
-      origin: "",
-      destination: "",
-      distance: "",
-      time: "",
-    });
+    findPlace()
+   
+    // destinationAPI.newDestination(formData);
+    // setFormData({
+    //   name: "",
+    //   distance: "",
+    //   time: "",
+    //   note: "",
+    // });
   }
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    // setFormData({  note: Autocomplete.getPlace() });
     console.log(formData);
-    console.log(originRef.current.value)
+    
   }
 
 
@@ -105,14 +131,18 @@ export default function Maps() {
 
     <>
       <div className=" flex flex-row items-center justify-evenly">
-        <Autocomplete className="m-0 p-0" >
-          <input type="text" placeholder='Origin' ref={originRef} className="w-60 h-8" name="origin" value={formData.origin} onChange={handleChange} />
+        <Autocomplete className="m-0 p-0"   >
+          <input type="text" placeholder='Origin' ref={originRef} className="w- h-8" name="name" value={formData.name} onChange={handleChange} />
         </Autocomplete>
+        <button type="submit" onClick={findPlace} className="w-36 h-8 bg-green-500 m-0 p-0" >Add To Trip</button>
+
+
         <Autocomplete className="m-0 p-0">
           <input type="text" placeholder='Destination' ref={destiantionRef} className="w-60 h-8" onChange={handleChange} name="destination" value={formData.destination} />
         </Autocomplete>
+       
 
-        <button type="submit" onClick={handleSubmit} className="w-60 h-8 bg-green-500 m-0 p-0" >ShowRoute</button>
+        <button type="submit" onClick={calculateRoute} className="w-36 h-8 bg-green-500 m-0 p-0" >ShowRoute</button>
 
       </div>
 
@@ -137,13 +167,15 @@ export default function Maps() {
       >
 
         <MarkerF
-          position={center}
+          position={currentLocation}
         />
         {directionsResponse && (
           <DirectionsRenderer directions={directionsResponse} />
         )}
 
       </GoogleMap>
+
+
 
     </>
 
