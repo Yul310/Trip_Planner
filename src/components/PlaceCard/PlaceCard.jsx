@@ -9,7 +9,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces }) {
         console.log(places);
         setAllPlaces(places);
         //sending new data to backend
-        const deleteCat = await placeAPI.deletePlace(evt.target.value);
+       await placeAPI.deletePlace(evt.target.value);
     }
 
 

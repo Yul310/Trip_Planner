@@ -9,7 +9,7 @@ export default function NewDestinationPage({setUpdated, allTrips, allPlaces,setA
        
         <Maps />
         <h3>New Places</h3>
-        <PlaceCard allPlaces={allPlaces} setAllPlaces={setAllPlaces}/>
+        <PlaceCard allPlaces={allPlaces} setUpdated={setUpdated} setAllPlaces={setAllPlaces}/>
         </div>
 
         )

@@ -12,7 +12,7 @@ router.post('/newPlace', placesCtrl.create);
 // router.put("/editTrip/:id", tripsCtrl.editTodo);
 
 // DELETE /api/todos/:id
-router.delete('/deleteTrip/:id',placesCtrl.deletePlace);
+router.delete('/deletePlace/:id',placesCtrl.deletePlace);
 
 // // GET /api/todos/:id
 // router.get('/:id', tripsCtrl.show);

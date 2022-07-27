@@ -37,6 +37,7 @@ async function create(req, res) {
 
 async function deletePlace(req, res) {
   // console.log(req.body)
+  ("place delete Controller 1")
   try {
     console.log(req.params.id);
     // const one = await Category.findById(req.params.id)

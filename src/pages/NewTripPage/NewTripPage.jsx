@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as tripAPI from "../../utilities/trips-api";
 
-export default function NewTripPage() {
+export default function NewTripPage({updated,setUpdated}) {
 
     const [formData, setFormData] = useState({
         // add in all the other fields
@@ -16,6 +16,7 @@ export default function NewTripPage() {
         console.log(formData);
   
         tripAPI.newTrip(formData);
+        setUpdated(!updated);
         setFormData({
           title: "",
           date: "",
