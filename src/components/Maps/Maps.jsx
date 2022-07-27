@@ -28,7 +28,6 @@ export default function Maps() {
     destination: "",
     distance: "",
     time: "",
-
   });
 
   /** @type React.MutableRefObject<HTMLInputElement> */
@@ -52,7 +51,6 @@ export default function Maps() {
   if (!isLoaded) return <div>Loading...</div>;
 
 
-
   async function calculateRoute() {
     if (originRef.current.value === '' || destiantionRef.current.value === '') {
       return
@@ -70,7 +68,7 @@ export default function Maps() {
     setDuration(results.routes[0].legs[0].duration.text)
     console.log(typeof distance)
     console.log(typeof duration)
-    setFormData({ ...formData, time: duration, distance: distance });
+    setFormData({ time: duration, distance: distance });
   }
 
   function clearRoute() {
@@ -86,30 +84,29 @@ export default function Maps() {
     evt.preventDefault();
     console.log(formData);
     calculateRoute()
-    
+
     destinationAPI.newDestination(formData);
     setFormData({
       origin: "",
       destination: "",
-      time: "",
       distance: "",
+      time: "",
     });
   }
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
     console.log(formData);
+    console.log(originRef.current.value)
   }
 
 
   return (
 
-
-
     <>
       <div className=" flex flex-row items-center justify-evenly">
-        <Autocomplete className="m-0 p-0">
-          <input type="text" placeholder='Origin' ref={originRef} className="w-60 h-8" onChange={handleChange} name="origin" value={formData.origin} />
+        <Autocomplete className="m-0 p-0" >
+          <input type="text" placeholder='Origin' ref={originRef} className="w-60 h-8" name="origin" value={formData.origin} onChange={handleChange} />
         </Autocomplete>
         <Autocomplete className="m-0 p-0">
           <input type="text" placeholder='Destination' ref={destiantionRef} className="w-60 h-8" onChange={handleChange} name="destination" value={formData.destination} />
@@ -123,10 +120,6 @@ export default function Maps() {
         <h3>Distance: {distance} </h3>
         <h3>Duration: {duration} </h3>
       </div>
-
-
-
-
 
       < GoogleMap
         center={center}
