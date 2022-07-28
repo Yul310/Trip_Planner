@@ -8,7 +8,7 @@ import * as placeAPI from "../../utilities/places-api";
 
 
 const containerStyle = {
-  width: '70vw',
+  width: '100vw',
   height: '50vh',
   margin: '0 auto',
 }

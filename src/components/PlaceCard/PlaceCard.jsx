@@ -68,7 +68,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces,distance,duration,se
                         <input type="text" name="note" className="w-1/10 h-32 text-align:start " value ={formData.note} />
                         <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Update </button>
                         <p>&nbsp;</p>
-                        <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete </button>
+                        <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete this destination </button>
 
                     </div>
 
