@@ -11,7 +11,7 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    console.log("place controller!!!")
+    console.log("place index controller!!!")
     const placeList = await Place.find({});
     res.json(placeList);
   } catch {
