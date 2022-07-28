@@ -10,9 +10,12 @@ export default function NewDestinationPage({updated,setUpdated, allTrips, allPla
         <div>
        
         <Maps allPlaces={allPlaces} setUpdated={setUpdated} updated={updated} distance={distance} setDistance={setDistance}duration={duration}setDuration={setDuration}/>
-        <h3>New Places</h3>
+
+        {/* <h3>New Places</h3> */}
+        <div className ="flex flex-row items-center " >
         <PlaceCard allPlaces={allPlaces} setUpdated={setUpdated} setAllPlaces={setAllPlaces} 
         distance={distance} setDistance={setDistance}duration={duration}setDuration={setDuration}/>
+        </div>
         </div>
 
         )

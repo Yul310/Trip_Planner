@@ -55,7 +55,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces,distance,duration,se
 
                     <div
                         key={idx}
-                        className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[15rem] text-left text-sm bg-[#AEC3B0]"
+                        className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-[#AEC3B0]"
                         id="hardshadow"
                     >
                        <h3 className="font-bold">{place.name.split(',')[0].toUpperCase()}</h3>
@@ -65,7 +65,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces,distance,duration,se
 
 
                         <h3 className="font-bold">Note: {place.note}</h3>
-                        <input type="text" name="note" value ={formData.note} />
+                        <input type="text" name="note" className="w-1/10 h-32 text-align:start " value ={formData.note} />
                         <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Update </button>
                         <p>&nbsp;</p>
                         <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete </button>
@@ -74,14 +74,14 @@ export default function PlaceCard({ allPlaces, setAllPlaces,distance,duration,se
 
                   { distance[idx]?
                     <div className=" flex-column w-80 h-30 ">
-                    <h1>||</h1>
+                    <h1>{"->"}</h1>
                     <p>&nbsp;</p>
                    
-                   <h3 className="font-bold">{distance[idx]}  </h3>
-                    <h3 className="font-bold"> {duration[idx]}</h3>
+                   <h3 className="font-bold text-sm">{distance[idx]}  </h3>
+                    <h3 className="font-bold text-sm"> {duration[idx]}</h3>
                 
                     <p>&nbsp;</p>
-                    <h1>||</h1>
+                    <h1>{"->"}</h1>
                     </div>
                     :null}
                 </>

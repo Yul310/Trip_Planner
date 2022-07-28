@@ -12,7 +12,7 @@ const containerStyle = {
   height: '50vh',
   margin: '0 auto',
 }
-const google = window.google
+const google = window.google   
 
 
 export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration}) {
