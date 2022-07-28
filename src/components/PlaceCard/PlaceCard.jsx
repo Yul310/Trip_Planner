@@ -35,7 +35,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
         console.log(place);
         place[0].note = formData.note;
         console.log(place)
-        
+
         // const updatedCard = { ...formData, note: formData.note };
         // setFormData(updatedCard);
         // console.log(place);
@@ -95,18 +95,18 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
 
 
                         <h3 className="font-bold">Note: </h3>
-                          
-                        {place.note? <p style={viewMode}>{place.note}</p> : <p className="font-light" style={viewMode} >No note yet</p>}
 
-                       
-                        
+                        {place.note ? <p style={viewMode}>{place.note}</p> : <p className="font-light" style={viewMode} >No note yet</p>}
 
-                        <input type="text" name="note" className="w-36 h-32 text-align:start " key={place._id}  placeholder={place.note} onChange={handleChange} style={editMode} />
+
+
+                        <textarea name="note" id="" cols="5" rows="5" placeholder={place.note} className="w-36 h-32 text-align:start " onChange={handleChange} style={editMode}></textarea>
+                        {/* <input type="text" name="note" className="w-36 h-32 text-align:start " key={place._id} value={place.note} placeholder={place.note} onChange={handleChange} style={editMode} /> */}
 
                         <button onClick={editPlace} value={place._id} className="font-bold text-sm"> Update </button>
 
                         <p>&nbsp;</p>
-                        <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete this destination </button>
+                        <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete Place </button>
 
                     </div>
 
