@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-import { GoogleMap, useJsApiLoader, MarkerF, Autocomplete, DirectionsRenderer, InfoWindow, Marker } from '@react-google-maps/api';
 
 import * as placeAPI from "../../utilities/places-api";
 
-const google = window.google
+
 
 
 
@@ -28,17 +27,21 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
         setUpdated(!updated)
     }
 
+
     async function editPlace(evt) {
 
-
-        const place = allPlaces.filter((place) => place._id !== evt.target.value);
-        place.note = FormData.note;
-        // const updatedCard = { ...formData, [evt.target.name]: evt.target.value };
+        const place = allPlaces.filter((place) => place._id === evt.target.value);
+        console.log(evt.target.value)
+        console.log(place);
+        place[0].note = formData.note;
+        console.log(place)
+        
+        // const updatedCard = { ...formData, note: formData.note };
         // setFormData(updatedCard);
-
+        // console.log(place);
         placeAPI.editPlace(evt.target.value, formData);
 
-        setUpdated(!updated)
+        // setUpdated(!updated)
         handleEditing()
 
     }
@@ -46,9 +49,10 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
 
     function handleChange(evt) {
 
-        // const updatedCard = { ...formData, [evt.target.name]: evt.target.value };
-        // setFormData(updatedCard);
-        // console.log(formData);
+        const updatedCard = { [evt.target.name]: evt.target.value };
+        setFormData(updatedCard);
+        console.log(updatedCard);
+        console.log(formData);
     }
 
 
@@ -97,7 +101,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
                        
                         
 
-                        <input type="text" name="note" className="w-1/10 h-32 text-align:start " key={place._id}  placeholder={place.note} onChange={handleChange} style={editMode} />
+                        <input type="text" name="note" className="w-36 h-32 text-align:start " key={place._id}  placeholder={place.note} onChange={handleChange} style={editMode} />
 
                         <button onClick={editPlace} value={place._id} className="font-bold text-sm"> Update </button>
 

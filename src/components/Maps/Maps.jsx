@@ -58,11 +58,11 @@ if (!isLoaded) return <div>Loading...</div>;
 
   async function findPlace() {
      console.log(originRef.current.value)
-    const directionsService = new google.maps.DirectionsService()
+    const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
       destination: originRef.current.value,
-      travelMode: google.maps.TravelMode.DRIVING,
+      travelMode: window.google.maps.TravelMode.DRIVING,
     })
     setFormData({ ...formData, name: results.request.origin.query })
     console.log(formData)
