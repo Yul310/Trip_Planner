@@ -164,24 +164,21 @@ if (!isLoaded) return <div>Loading...</div>;
     <>
       <div className=" flex flex-row items-center justify-evenly">
         <Autocomplete className="m-0 p-0"   >
-          <input type="text" placeholder='Origin' ref={originRef} className="w- h-8" name="name"   />
+          <input type="text" placeholder='Origin' ref={originRef} className="w-60 h-8" name="name"   />
         </Autocomplete>
         <button type="submit" onClick={findPlace} className="w-36 h-8 bg-green-500 m-0 p-0" >Add To Trip</button>
 
 
-        <Autocomplete className="m-0 p-0">
+        {/* <Autocomplete className="m-0 p-0">
           <input type="text" placeholder='Destination' ref={destiantionRef} className="w-60 h-8" onChange={handleChange} name="destination" value={formData.destination} />
-        </Autocomplete>
+        </Autocomplete> */}
 
 
         <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-green-500 m-0 p-0" >ShowRoute</button>
 
       </div>
 
-      <div className=" flex w-200 h-8 flex-row  justify-evenly ">
-        <h3>Distance: {distance} </h3>
-        <h3>Duration: {duration} </h3>
-      </div>
+      
 
       < GoogleMap
         center={currentLocation}

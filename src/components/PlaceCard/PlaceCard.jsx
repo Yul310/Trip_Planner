@@ -29,34 +29,22 @@ export default function PlaceCard({ allPlaces, setAllPlaces,distance,duration,se
     }
 
     // async function editPlace(evt) {
-    //     console.log(evt.target.value);
-    //     console.log(allCats)
-    //     // FrontEnd updating
+     
       
-    //     const cats = allCats.filter((cat) => cat._id === evt.target.value);
+    //     const place = allPlaces.filter((place) => place._id === evt.target.value);
         
-    //     cats[0].title = formData.title
-    //     console.log(cats[0])
-    //    console.log(cats[0].title )
-    //     //Backend updating
-    //     catAPI.editCat(evt.target.value, formData);
-    //     setEdit(!edit)
-    //     setUpdated(!magic)
+    //     formData.note = evt.target.value;
+     
+      
+    //     placeAPI.editPlace(evt.target.value, formData);
+    
+    //     setUpdated(!updated)
         
-    //     setFormData({
-    //         title: ""
-    //     })
         
     // }
 
 
-    // function clearRoute() {
-    //     setDirectionsResponse(null)
-    //     setDistance('')
-    //     setDuration('')
-    //     originRef.current.value = ''
-    //     destiantionRef.current.value = ''
-    // }
+    
 
     return (
         <>
@@ -67,21 +55,23 @@ export default function PlaceCard({ allPlaces, setAllPlaces,distance,duration,se
 
                     <div
                         key={idx}
-                        className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[20rem] text-left text-sm"
+                        className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[15rem] text-left text-sm"
                         id="hardshadow"
                     >
                        <h3 className="font-bold">{place.name.split(',')[0].toUpperCase()}</h3>
-                        <h3 className="font-medium">{place.name.split(',').shift()}</h3>
+                        <p className="font-light">{place.name.split(',')}</p>
                        
 
 
 
-                        <h3 className="font-semibold">Todo: {place.note}</h3>
-
-                        <button onClick={deletePlace} value={place._id}> Delete </button>
+                        <h3 className="font-bold">Note: {place.note}</h3>
+                        <input type="text" name="note" value ={formData.note} />
+                        <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Update </button>
+                        <p>&nbsp;</p>
+                        <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete </button>
 
                     </div>
-                    
+
                   { distance[idx]?
                     <div className=" flex-column w-80 h-30 ">
                     <h1>||</h1>
