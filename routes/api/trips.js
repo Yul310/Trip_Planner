@@ -11,8 +11,8 @@ router.post('/newTrip', tripsCtrl.create);
 // // POST /api/todos
 // router.put("/editTrip/:id", tripsCtrl.editTodo);
 
-// // DELETE /api/todos/:id
-// router.delete('/deleteTrip/:id', tripsCtrl.deleteTodo);
+// DELETE /api/todos/:id
+router.delete('/deleteTrip/:id', tripsCtrl.deleteTrip);
 
 // // GET /api/todos/:id
 // router.get('/:id', tripsCtrl.show);

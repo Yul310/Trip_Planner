@@ -13,6 +13,10 @@ export function newTrip(tripData) {
   }
 
 
+export function deleteTrip(id) {
+    return sendRequest(`${BASE_URL}/deleteTrip/${id}`, "DELETE");
+  }
+
 /*--- Helper Functions ---*/
 
 async function sendRequest(url, method = "GET", payload = null) {

@@ -3,7 +3,8 @@ const Trip = require('../../models/trip');
 module.exports = {
 
   create,
-  index
+  index,
+  deleteTrip,
 
 };
 
@@ -42,14 +43,14 @@ async function create(req, res) {
 
 
 // to delete a todo
-// async function deleteTrip(req, res) {
-//   try {
-//     console.log(req.params.id)
-//     const one = await Trip.findByIdAndDelete(req.params.id)
-//   } catch (e) {
-//     res.status(400).json(e);
-//   }
-// }
+async function deleteTrip(req, res) {
+  try {
+    console.log(req.params.id)
+    const one = await Trip.findByIdAndDelete(req.params.id)
+  } catch (e) {
+    res.status(400).json(e);
+  }
+}
 
 // to edit a todo
 // async function editTrip(req, res) {

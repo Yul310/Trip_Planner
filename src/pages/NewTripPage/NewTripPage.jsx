@@ -9,7 +9,7 @@ export default function NewTripPage({updated,setUpdated}) {
         date: "",
         time: "",
         note: "",
-        destination:""
+        destination:[]
       });
 
       async function handleSubmit(evt) {
@@ -23,7 +23,7 @@ export default function NewTripPage({updated,setUpdated}) {
           date: "",
           time: "",
           note: "",
-         destination:""
+         destination:[]
         });
       }
 

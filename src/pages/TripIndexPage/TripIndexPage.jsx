@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
+import * as tripAPI from "../../utilities/trips-api";
+
+
+export default function TripIndexPage({ allTrips,setAllTrips,setUpdated,updated }) {
 
 
 
 
-export default function TripIndexPage({ allTrips }) {
+    async function deleteTrip(evt) {
+        const trips = allTrips.filter((trip) => trip._id !== evt.target.value);
+        console.log(trips);
+        setAllTrips(trips);
+        //sending new data to backend
+        await tripAPI.deleteTrip(evt.target.value);
+        setUpdated(!updated)
+        // calculateAllRoute()
+    }
 
-
-    ////////////////
-    // CHANGE DATE
-    ////////////////
 
 
 
@@ -32,6 +40,8 @@ export default function TripIndexPage({ allTrips }) {
 
                 <h3 className="font-semibold">{trip.date}</h3>
 
+                <p>&nbsp;</p>
+                        <button onClick={deleteTrip} value={trip._id} className="font-bold text-sm"> Delete </button>
 
             </div>
             ))}

@@ -16,9 +16,9 @@ const tripSchema = new Schema(
     note: {
     type: String
     },
-    destination: {
+    destination:[ {
       type: Schema.Types.ObjectId, ref: "Place"
-    },
+    }],
   },
   {
     timestamps: true,
