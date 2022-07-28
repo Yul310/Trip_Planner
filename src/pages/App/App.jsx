@@ -69,7 +69,10 @@ useEffect(
         
         <Route path="/trips/new" element={<NewTripPage updated={updated}setUpdated={setUpdated} allPlaces={allPlaces}/>} />
 
-        <Route path="/trips/places" element={<NewPlacePage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}/>} />
+        <Route path="/trips/places" element={<NewPlacePage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
+        allTrips={allTrips}
+        setAllTrips={setAllTrips}
+        />} />
 
         <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setUpdated={setUpdated} updated={updated} />} />
 

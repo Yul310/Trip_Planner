@@ -1,5 +1,6 @@
 
 const Place = require('../../models/place');
+const Trip = require('../../models/trip');
 
 module.exports = {
 
@@ -24,12 +25,21 @@ async function index(req, res) {
 
 // create new todos
 async function create(req, res) {
-    console.log("place create Controller 1")
+  console.log("place create Controller 1")
   try {
     const newPlace = await Place.create(req.body);
     const placeList = await Place.find({});
     placeList.push(newPlace)
+
+    const theOne = await Trip.findById(newPlace.tripId)
+    console.log("theOne")
+    theOne.destination.push(newPlace._id)
+
+
     await placeList.save();
+   
+    theOne.save()
+
     response.json(placeList);
   } catch (e) {
     res.status(400).json(e)
@@ -56,12 +66,12 @@ async function deletePlace(req, res) {
 // to edit a place card
 async function editPlace(req, res) {
   const placeList = await Place.findByIdAndUpdate(
-    {_id:req.params.id},
+    { _id: req.params.id },
     {
-    
+
       note: req.body.note,
-    },{new:true}
-   
+    }, { new: true }
+
   );
   console.log("edit starated")
 }

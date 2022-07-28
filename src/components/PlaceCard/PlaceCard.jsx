@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 
 import * as placeAPI from "../../utilities/places-api";
-
+// import {calculateAllRoute} from '../Maps/Maps';
 
 
 
@@ -25,6 +25,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
         //sending new data to backend
         await placeAPI.deletePlace(evt.target.value);
         setUpdated(!updated)
+        // calculateAllRoute()
     }
 
 

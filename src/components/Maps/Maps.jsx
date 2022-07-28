@@ -15,7 +15,8 @@ const containerStyle = {
 const google = window.google   
 
 
-export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration}) {
+export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration,allTrips,setAllTrips}) 
+{
   // const mapRef = useRef<GoogleMap>(null);
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
@@ -23,7 +24,7 @@ export default function Map({allPlaces,updated,setUpdated,distance,setDistance, 
   // const [duration, setDuration] = useState([])
   const [formData, setFormData] = useState({
     name: "",
-    distance: "",
+    tripId: "",
     time: "",
     note: "",
   });
@@ -50,6 +51,13 @@ export default function Map({allPlaces,updated,setUpdated,distance,setDistance, 
 if (!isLoaded) return <div>Loading...</div>;
 
 
+
+
+
+
+
+
+
 //////////////////////////////////////
 /////  Google API Functions    ///////
 //////////////////////////////////////
@@ -66,8 +74,6 @@ if (!isLoaded) return <div>Loading...</div>;
     })
     setFormData({ ...formData, name: results.request.origin.query })
     console.log(formData)
-    // console.log(results.geocoded_waypoints[0].place_id)
-    console.log(results.request.origin.query)
     placeAPI.newPlace(formData)
     setUpdated(!updated)
   }
@@ -166,6 +172,34 @@ if (!isLoaded) return <div>Loading...</div>;
         <Autocomplete className="m-0 p-0"   >
           <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name"   />
         </Autocomplete>
+
+
+        <label className="font-light text-left text-lg h-1/2 px-2 py-2">
+            Trip Name
+          </label>
+
+          <select
+            name="tripId"
+            value={formData.tripId}
+            onChange={handleChange}
+            className="font-extralight text-2l text-left h-1/2 px-2 py-2 bg-[#f7f7f2]"
+          >
+            {allTrips.map((trip) => (
+              <option value={trip._id} key={trip._id}>
+                {trip.title}
+              </option>
+            ))}
+
+            {/* <option value="A">a</option>
+            <option value="B">b</option>
+            <option value="C">c</option> */}
+          </select>
+
+
+
+
+
+
         <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#598392] m-0 p-0" >Add To Trip</button>
 
 

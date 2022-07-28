@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-
+const { Schema, model } = mongoose;
+require("./place");
 //-- Model ---------------------------------------------//
 
 const tripSchema = new Schema(
@@ -17,12 +17,21 @@ const tripSchema = new Schema(
     type: String
     },
     destination: {
-      type: Schema.Types.ObjectId, ref: "destination"
-    }
+      type: Schema.Types.ObjectId, ref: "Place"
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Trip", tripSchema);
+
+
+// make category model
+const Trip = model("Trip", tripSchema);
+
+//-- Export Model ---------------------------------------------//
+module.exports = Trip;
+
+
+

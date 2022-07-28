@@ -10,7 +10,7 @@ const placeSchema = new Schema(
       type: String,
       required: true,
     },
-    distance:{
+    tripId:{
         type: String,
     },
     time:{
