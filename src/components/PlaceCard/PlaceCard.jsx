@@ -55,7 +55,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces,distance,duration,se
 
                     <div
                         key={idx}
-                        className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[15rem] text-left text-sm"
+                        className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[15rem] text-left text-sm bg-[#AEC3B0]"
                         id="hardshadow"
                     >
                        <h3 className="font-bold">{place.name.split(',')[0].toUpperCase()}</h3>

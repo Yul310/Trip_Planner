@@ -22,10 +22,10 @@ export default function NavBar({setUser}) {
       <Link
                   to=""
                   onClick={handleLogOut}
-                  className="pl-3 text-white flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] active: transition-colors duration-300 text-lg font-extralight"
+                  className="pl-3 text-[#1E2D24] flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] active: transition-colors duration-300 text-lg font-light"
                   aria-selected="false"
                 >
-                  <i className="fa-solid fa-arrow-right-from-bracket mt-1.5 text-orange-400"></i>
+                  <i className="fa-solid fa-arrow-right-from-bracket mt-1.5 text-[#598392]"></i>
                   &nbsp;&nbsp;&nbsp;Log Out
                 </Link>
     </nav>

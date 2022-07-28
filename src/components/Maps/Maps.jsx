@@ -164,9 +164,9 @@ if (!isLoaded) return <div>Loading...</div>;
     <>
       <div className=" flex flex-row items-center justify-evenly">
         <Autocomplete className="m-0 p-0"   >
-          <input type="text" placeholder='Origin' ref={originRef} className="w-60 h-8" name="name"   />
+          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name"   />
         </Autocomplete>
-        <button type="submit" onClick={findPlace} className="w-36 h-8 bg-green-500 m-0 p-0" >Add To Trip</button>
+        <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#598392] m-0 p-0" >Add To Trip</button>
 
 
         {/* <Autocomplete className="m-0 p-0">
@@ -174,11 +174,11 @@ if (!isLoaded) return <div>Loading...</div>;
         </Autocomplete> */}
 
 
-        <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-green-500 m-0 p-0" >ShowRoute</button>
+        <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-[#598392] m-0 p-0" >ShowRoute</button>
 
       </div>
 
-      
+     
 
       < GoogleMap
         center={currentLocation}

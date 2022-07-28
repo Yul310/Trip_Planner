@@ -156,11 +156,11 @@ export default [
         "featureType": "water",
         "elementType": "geometry",
         "stylers": [
-            {   "saturation": -80
-                // "color": "#000000"
+            {  
+                "color": "#598392"
             },
             {
-                "lightness": -60
+                "lightness": -50
             }
         ]
     }
