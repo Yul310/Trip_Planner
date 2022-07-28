@@ -6,6 +6,7 @@ module.exports = {
   create,
   index,
   deletePlace,
+  editPlace,
 
 };
 
@@ -49,4 +50,18 @@ async function deletePlace(req, res) {
   } catch (e) {
     res.status(400).json(e);
   }
+}
+
+
+// to edit a place card
+async function editPlace(req, res) {
+  const placeList = await Place.findByIdAndUpdate(
+    {_id:req.params.id},
+    {
+    
+      note: req.body.note,
+    },{new:true}
+   
+  );
+  console.log("edit starated")
 }

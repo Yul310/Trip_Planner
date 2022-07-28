@@ -9,7 +9,7 @@ router.get('/', placesCtrl.index);
 router.post('/newPlace', placesCtrl.create);
 
 // // POST /api/todos
-// router.put("/editTrip/:id", tripsCtrl.editTodo);
+router.put("/editPlace/:id", placesCtrl.editPlace);
 
 // DELETE /api/todos/:id
 router.delete('/deletePlace/:id',placesCtrl.deletePlace);

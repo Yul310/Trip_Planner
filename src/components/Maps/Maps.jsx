@@ -16,7 +16,7 @@ const google = window.google
 
 
 export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration}) {
-  const mapRef = useRef<GoogleMap>(null);
+  // const mapRef = useRef<GoogleMap>(null);
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   // const [distance, setDistance] = useState([])
@@ -114,7 +114,7 @@ if (!isLoaded) return <div>Loading...</div>;
 
                 destination: allPlaces[i + 1].name,
 
-                travelMode: google.maps.TravelMode.DRIVING,
+                travelMode: window.google.maps.TravelMode.DRIVING,
 
             })
 

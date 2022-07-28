@@ -16,6 +16,11 @@ export function deletePlace(id) {
     return sendRequest(`${BASE_URL}/deletePlace/${id}`, "DELETE");
   }
 
+export function editPlace(id,placeData) {
+    return sendRequest(`${BASE_URL}/editPlace/${id}`, 'PUT',placeData);
+  }
+  
+
 /*--- Helper Functions ---*/
 
 async function sendRequest(url, method = "GET", payload = null) {
