@@ -19,8 +19,8 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
     }
 
     function loopName(array) {
-        for (let i = 0; i < array.length; i++) {
-            return <h3 className="font-semibold"> {i+1}. {array[i].name.split(',')[0]} </h3>
+        for (let i = 1; i < array.length; i++) {
+            return <h3 className="font-semibold"> {i + 1}. {array[i].name.split(',')[0]} </h3>
         }
     }
 
@@ -50,8 +50,14 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
                     } */}
 
                     {trip.place.length != 0 ?
-                        loopName(trip.place) : null
+                        <h3 className="font-semibold"> 
+                        Starting from {trip.place[0].name.split(',')[0]}</h3>: null
                     }
+
+                    {/* {trip.place.length != 0 ?
+                        loopName(trip.place) : null
+                    } */}
+
 
 
 

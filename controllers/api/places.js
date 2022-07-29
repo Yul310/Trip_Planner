@@ -32,14 +32,14 @@ async function create(req, res) {
     placeList.push(newPlace)
     console.log(newPlace)
     const theOne = await Trip.findById(newPlace.tripId)
-    
+
     theOne.place.push(newPlace._id)
 
     theOne.save()
     console.log(theOne)
     await placeList.save();
-   
-   
+
+
 
     response.json(placeList);
   } catch (e) {
@@ -52,12 +52,14 @@ async function deletePlace(req, res) {
   ("place delete Controller 1")
   try {
     console.log(req.params.id);
-    // const one = await Category.findById(req.params.id)
-    const one = await Place.findByIdAndDelete(req.params.id);
-    // const one = await Category.findOneAndRemove({ _Id: req.params.id } )
-    // const catList = await Category.find({})
-    // await catList.save()
-    // res.json(catList)
+    const place = await Place.findById(req.params.id)
+    const deleteOne = await Place.findByIdAndDelete(req.params.id);
+
+
+
+    const theTrip = await Trip.findOneAndUpdate({ _id: place.tripId }, { $pull: { place: place._id } }, { new: true })
+    console.log(theTrip)
+
   } catch (e) {
     res.status(400).json(e);
   }

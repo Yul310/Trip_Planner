@@ -26,10 +26,10 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
         const places = allPlaces.filter((place) => place._id !== evt.target.value);
         console.log(places);
         setAllPlaces(places);
-        //sending new data to backend
+    
         await placeAPI.deletePlace(evt.target.value);
         setUpdated(!updated)
-        // calculateAllRoute()
+        
     }
 
 
