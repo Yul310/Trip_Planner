@@ -29,9 +29,6 @@ app.use("/api/users", require("./routes/api/users"));
 // Trips API Routes
 app.use("/api/trips", require("./routes/api/trips"));
 
-// Destinations API Routes
-app.use("/api/destinations", require("./routes/api/destinations"));
-
 // Places API Routes
 app.use("/api/places", require("./routes/api/places"));
 

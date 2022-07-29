@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { EditText, EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
-import { Link } from "react-router-dom";
+import {Link } from "react-router-dom";
+
 
 
 import * as placeAPI from "../../utilities/places-api";
@@ -12,7 +13,7 @@ import * as placeAPI from "../../utilities/places-api";
 
 export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration, setDistance, setDuration, setUpdated, updated }) {
 
-    const [edit, setEdit] = useState(false);
+ 
     const [formData, setFormData] = useState({
         name: "",
         tripId: "",
@@ -32,24 +33,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
     }
 
 
-    async function editPlace(evt) {
 
-        const place = allPlaces.filter((place) => place._id === evt.target.value);
-        console.log(evt.target.value)
-        console.log(place);
-        place[0].note = formData.note;
-        place[0].staying = formData.staying;
-        console.log(place)
-
-        // const updatedCard = { ...formData, note: formData.note };
-        // setFormData(updatedCard);
-        // console.log(place);
-        placeAPI.editPlace(evt.target.value, formData);
-
-        // setUpdated(!updated)
-        // handleEditing()
-
-    }
 
 
     function handleChange(evt) {

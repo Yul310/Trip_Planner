@@ -77,6 +77,7 @@ if (!isLoaded) return <div>Loading...</div>;
     console.log(formData)
     placeAPI.newPlace(formData)
     setUpdated(!updated)
+    originRef = ("")
     setFormData({
       name: "",
       tripId: "",
@@ -87,27 +88,27 @@ if (!isLoaded) return <div>Loading...</div>;
 
 
 
-  async function calculateRoute() {
-    if (originRef.current.value === '' || destiantionRef.current.value === '') {
-      return
-    }
+  // async function calculateRoute() {
+  //   if (originRef.current.value === '' || destiantionRef.current.value === '') {
+  //     return
+  //   }
 
-    const directionsService = new google.maps.DirectionsService()
-    const results = await directionsService.route({
-      origin: originRef.current.value,
+  //   const directionsService = new google.maps.DirectionsService()
+  //   const results = await directionsService.route({
+  //     origin: originRef.current.value,
 
-      destination: destiantionRef.current.value,
+  //     destination: destiantionRef.current.value,
 
-      travelMode: google.maps.TravelMode.DRIVING,
+  //     travelMode: google.maps.TravelMode.DRIVING,
 
-    })
+  //   })
    
-    setDirectionsResponse(results)
-    setDistance(results.routes[0].legs[0].distance.text)
-    setDuration(results.routes[0].legs[0].duration.text)
+  //   setDirectionsResponse(results)
+  //   setDistance(results.routes[0].legs[0].distance.text)
+  //   setDuration(results.routes[0].legs[0].duration.text)
 
-    // setFormData({ time: duration, distance: distance });
-  }
+  //   // setFormData({ time: duration, distance: distance });
+  // }
 
 
 

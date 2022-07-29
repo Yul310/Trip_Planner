@@ -2,7 +2,7 @@ import Maps from '../../components/Maps/Maps';
 import PlaceCard from '../../components/PlaceCard/PlaceCard';
 import { useState, useCallback, useEffect, useRef } from 'react'
 
-export default function NewDestinationPage({updated,setUpdated, allTrips, allPlaces,setAllPlaces,setAllTrips }) 
+export default function NewPlacePage({updated,setUpdated, allTrips, allPlaces,setAllPlaces,setAllTrips }) 
 {
     const [distance, setDistance] = useState([])
     const [duration, setDuration] = useState([])
