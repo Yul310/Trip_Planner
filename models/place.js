@@ -13,7 +13,7 @@ const placeSchema = new Schema(
     tripId:{
         type: String,
     },
-    time:{
+    staying:{
         type:String,
     },
     note: {

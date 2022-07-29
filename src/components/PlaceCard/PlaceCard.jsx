@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { EditText, EditTextarea } from 'react-edit-text';
+import 'react-edit-text/dist/index.css';
 
 
 import * as placeAPI from "../../utilities/places-api";
@@ -12,8 +14,8 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
     const [edit, setEdit] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
-        distance: "",
-        time: "",
+        tripId: "",
+        staying: "",
         note: "",
     });
 
@@ -35,6 +37,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
         console.log(evt.target.value)
         console.log(place);
         place[0].note = formData.note;
+        place[0].staying = formData.staying;
         console.log(place)
 
         // const updatedCard = { ...formData, note: formData.note };
@@ -50,9 +53,9 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
 
     function handleChange(evt) {
 
-        const updatedCard = { [evt.target.name]: evt.target.value };
+        const updatedCard = {...formData,[evt.target.name]: evt.target.value };
         setFormData(updatedCard);
-        console.log(updatedCard);
+    
         console.log(formData);
     }
 
@@ -88,11 +91,18 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
                         className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-[#AEC3B0]"
                         id="hardshadow"
                     >
-
+<form action="" onChange={handleChange}>
                         <h3 className="font-bold" value={formData.name}>{place.name.split(',')[0].toUpperCase()}</h3>
                         <p className="font-light">{place.name.split(',')}</p>
 
 
+                        <h3 className="font-bold">Staying Time: </h3>
+                        {place.staying ? <p style={viewMode}>{place.staying}</p> : <p className="font-light" style={viewMode} >No information yet</p>}
+
+                        {/* <input type="text" name="staying" className="w-36 h-8 text-align:start " value={place.staying} placeholder={place.staying} onChange={handleChange} style={editMode} /> */}
+                    
+
+                        <textarea name="staying" id="staying" cols="5" rows="5" placeholder={place.staying} className="w-36 h-8 text-align:start " value={formData.staying}  style={editMode}></textarea>
 
 
                         <h3 className="font-bold">Note: </h3>
@@ -101,14 +111,14 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
 
 
 
-                        <textarea name="note" id="" cols="5" rows="5" placeholder={place.note} className="w-36 h-32 text-align:start " onChange={handleChange} style={editMode}></textarea>
+                        <textarea name="note" id="" cols="5" rows="5" placeholder={place.note} className="w-36 h-32 text-align:start " value={formData.note} onChange={handleChange} style={editMode}></textarea>
                         {/* <input type="text" name="note" className="w-36 h-32 text-align:start " key={place._id} value={place.note} placeholder={place.note} onChange={handleChange} style={editMode} /> */}
-
+                        </form>
                         <button onClick={editPlace} value={place._id} className="font-bold text-sm"> Update </button>
 
                         <p>&nbsp;</p>
                         <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete Place </button>
-
+                        
                     </div>
 
                     {distance[idx] ?

@@ -69,7 +69,7 @@ async function editPlace(req, res) {
   const placeList = await Place.findByIdAndUpdate(
     { _id: req.params.id },
     {
-
+      staying: req.body.staying,
       note: req.body.note,
     }, { new: true }
 

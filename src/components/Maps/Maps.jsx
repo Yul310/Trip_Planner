@@ -25,7 +25,7 @@ export default function Map({allPlaces,updated,setUpdated,distance,setDistance, 
   const [formData, setFormData] = useState({
     name: "",
     tripId: "",
-    time: "",
+    staying: "",
     note: "",
   });
   const [currentLocation, setCurrentLocation] = useState({
