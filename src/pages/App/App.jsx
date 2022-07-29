@@ -8,6 +8,7 @@ import { getUser } from '../../utilities/users-service';
 import NewPlacePage from "../NewPlacePage/NewPlacePage";
 import NewTripPage from "../NewTripPage/NewTripPage";
 import TripIndexPage from "../TripIndexPage/TripIndexPage";
+import PlaceEditPage from "../PlaceEditPage/PlaceEditPage";
 
 import * as tripAPI from "../../utilities/trips-api";
 
@@ -76,6 +77,10 @@ useEffect(
 
         <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips}setUpdated={setUpdated} updated={updated} />} />
 
+        <Route path="/trips/editPlace/:id" element={<PlaceEditPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
+        allTrips={allTrips}
+        setAllTrips={setAllTrips}/>} />
+        
       </Routes>
       </div>
       :
