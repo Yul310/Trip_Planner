@@ -118,11 +118,11 @@ input:focus {
 }
 
 button, a.button {
-  margin: 1vmin;
-  padding: 1vmin;
+  margin: 6px;
+  padding: 6px;
   color: var(--white);
   background-color: var(--orange);
-  font-size: 2vmin;
+  font-size: 14px;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
@@ -130,6 +130,22 @@ button, a.button {
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
+}
+
+#linkButton{
+  margin: 6px;
+  padding: 6px;
+  color: var(--white);
+  background-color: var(--orange);
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: .1vmin solid var(--tan-2);
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+
 }
 
 button.btn-sm {

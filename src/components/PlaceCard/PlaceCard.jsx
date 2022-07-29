@@ -47,7 +47,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
         placeAPI.editPlace(evt.target.value, formData);
 
         // setUpdated(!updated)
-        handleEditing()
+        // handleEditing()
 
     }
 
@@ -65,18 +65,18 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
 
 
     //*** function = Edit data ***//
-    function handleEditing(evt) {
-        setEdit(!edit);
-    }
+    // function handleEditing(evt) {
+    //     setEdit(!edit);
+    // }
 
-    let viewMode = {};
-    let editMode = {};
+    // let viewMode = {};
+    // let editMode = {};
 
-    if (edit) {
-        viewMode.display = "none";
-    } else {
-        editMode.display = "none";
-    }
+    // if (edit) {
+    //     viewMode.display = "none";
+    // } else {
+    //     editMode.display = "none";
+    // }
 
 
 
@@ -98,26 +98,26 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
 
 
                             <h3 className="font-bold">Staying Time: </h3>
-                            {place.staying ? <p style={viewMode}>{place.staying}</p> : <p className="font-light" style={viewMode} >No information yet</p>}
+                            {place.staying ? <p >{place.staying}</p> : <p className="font-light text-sm"  >No information yet</p>}
 
                             {/* <input type="text" name="staying" className="w-36 h-8 text-align:start " value={place.staying} placeholder={place.staying} onChange={handleChange} style={editMode} /> */}
 
-
-                            <textarea name="staying" id="staying" cols="5" rows="5" placeholder={place.staying} className="w-36 h-8 text-align:start " value={formData.staying} style={editMode}></textarea>
+{/* 
+                            <textarea name="staying" id="staying" cols="5" rows="5" placeholder={place.staying} className="w-36 h-8 text-align:start " value={formData.staying} ></textarea> */}
 
 
                             <h3 className="font-bold">Note: </h3>
 
-                            {place.note ? <p style={viewMode}>{place.note}</p> : <p className="font-light" style={viewMode} >No note yet</p>}
+                            {place.note ? <p >{place.note}</p> : <p className="font-light text-sm"  >No note yet</p>}
 
 
 
-                            <textarea name="note" id="" cols="5" rows="5" placeholder={place.note} className="w-36 h-32 text-align:start " value={formData.note}  style={editMode}></textarea>
+                            {/* <textarea name="note" id="" cols="5" rows="5" placeholder={place.note} className="w-36 h-32 text-align:start " value={formData.note}  ></textarea> */}
                             {/* <input type="text" name="note" className="w-36 h-32 text-align:start " key={place._id} value={place.note} placeholder={place.note} onChange={handleChange} style={editMode} /> */}
                         </form>
                         {/* <button onClick={editPlace} value={place._id} className="font-bold text-sm"> Update </button> */}
 
-                         <Link to={`/trips/editPlace/${place._id}`} className="font-bold text-sm"> Edit Page </Link>
+                         <Link to={`/trips/editPlace/${place._id}`} id="linkButton" className="font-bold text-sm "> Edit Page </Link>
                         <p>&nbsp;</p>
                         <button onClick={deletePlace} value={place._id} className="font-bold text-sm"> Delete Place </button>
 
