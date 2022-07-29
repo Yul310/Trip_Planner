@@ -30,15 +30,16 @@ async function create(req, res) {
     const newPlace = await Place.create(req.body);
     const placeList = await Place.find({});
     placeList.push(newPlace)
-
+    console.log(newPlace)
     const theOne = await Trip.findById(newPlace.tripId)
-    console.log("theOne")
-    theOne.destination.push(newPlace._id)
+    
+    theOne.place.push(newPlace._id)
 
-
+    theOne.save()
+    console.log(theOne)
     await placeList.save();
    
-    theOne.save()
+   
 
     response.json(placeList);
   } catch (e) {

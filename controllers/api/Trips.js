@@ -1,4 +1,5 @@
 const Trip = require('../../models/trip');
+const Place = require('../../models/place');
 
 module.exports = {
 
@@ -10,8 +11,9 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    console.log("index controller!!!")
-    const tripList = await Trip.find({}).populate('destination').exec();
+    console.log("trip index controller!!!")
+    const tripList = await Trip.find({}).populate("place").exec();
+    console.log(tripList)
     res.json(tripList);
   } catch {
     res.status(400).json('Bad Serverside')
@@ -22,12 +24,13 @@ async function index(req, res) {
 
 // create new todos
 async function create(req, res) {
-    console.log("Controller 1")
+    console.log("Trip create Controller 1")
   try {
-    console.log("Controller 2")
+    
     const newTrip = await Trip.create(req.body);
     const tripList = await Trip.find({});
     tripList.push(newTrip)
+    console.log("Trip Create Controller 2")
     await tripList.save();
     response.json(tripList);
   } catch (e) {
