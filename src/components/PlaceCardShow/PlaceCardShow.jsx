@@ -1,16 +1,15 @@
 import { useState, useEffect, useRef } from "react";
-import { EditText, EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
-import {Link } from "react-router-dom";
+import { Link, useNavigate, useParams, Navigate } from "react-router-dom";
 import * as placeAPI from "../../utilities/places-api";
-// import {calculateAllRoute} from '../Maps/Maps';
 
 
 
 
-export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration, setDistance, setDuration, setUpdated, updated }) {
 
- 
+export default function PlaceCardIndex({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips }) {
+
+    const [theTrip, setTheTrip] = useState();
     const [formData, setFormData] = useState({
         name: "",
         tripId: "",
@@ -18,18 +17,30 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
         note: "",
     });
 
+console.log(allTrips)
 
     async function deletePlace(evt) {
         const places = allPlaces.filter((place) => place._id !== evt.target.value);
         console.log(places);
         setAllPlaces(places);
-    
+
         await placeAPI.deletePlace(evt.target.value);
         setUpdated(!updated)
-        
+
     }
 
 
+    const { id } = useParams();
+
+    function placeFinder() {
+        console.log(id)
+        console.log(allTrips)
+        const trip = allTrips.filter((trip) => trip._id === id);
+        console.log(allTrips)
+        setTheTrip(trip)
+
+    }
+    placeFinder();
 
 
 
@@ -45,8 +56,8 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
 
     return (
         <>
-
-            {allPlaces.map((place, idx) => (
+            <h3>{theTrip.title}</h3>
+            {/* {allPlaces.map((place, idx) => (
                 <>
 
 
@@ -63,10 +74,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
                             <h3 className="font-bold">Staying Time: </h3>
                             {place.staying ? <p >{place.staying}</p> : <p className="font-light text-sm"  >No information yet</p>}
 
-                            {/* <input type="text" name="staying" className="w-36 h-8 text-align:start " value={place.staying} placeholder={place.staying} onChange={handleChange} style={editMode} /> */}
-
-{/* 
-                            <textarea name="staying" id="staying" cols="5" rows="5" placeholder={place.staying} className="w-36 h-8 text-align:start " value={formData.staying} ></textarea> */}
+                         
 
 
                             <h3 className="font-bold">Note: </h3>
@@ -74,11 +82,8 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
                             {place.note ? <p >{place.note}</p> : <p className="font-light text-sm"  >No note yet</p>}
 
 
-
-                            {/* <textarea name="note" id="" cols="5" rows="5" placeholder={place.note} className="w-36 h-32 text-align:start " value={formData.note}  ></textarea> */}
-                            {/* <input type="text" name="note" className="w-36 h-32 text-align:start " key={place._id} value={place.note} placeholder={place.note} onChange={handleChange} style={editMode} /> */}
                         </form>
-                        {/* <button onClick={editPlace} value={place._id} className="font-bold text-sm"> Update </button> */}
+                     
 
                          <Link to={`/trips/editPlace/${place._id}`} id="linkButton" className="font-bold text-sm "> Edit Page </Link>
                         <p>&nbsp;</p>
@@ -99,7 +104,7 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
                         </div>
                         : null}
                 </>
-            ))}
+            ))} */}
 
 
         </>

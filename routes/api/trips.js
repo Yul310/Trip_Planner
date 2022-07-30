@@ -14,7 +14,9 @@ router.post('/newTrip', tripsCtrl.create);
 // DELETE /api/todos/:id
 router.delete('/deleteTrip/:id', tripsCtrl.deleteTrip);
 
+
+
 // // GET /api/todos/:id
-// router.get('/:id', tripsCtrl.show);
+ router.get('/api/showTrip/:id', tripsCtrl.showTrip);
 
 module.exports = router;

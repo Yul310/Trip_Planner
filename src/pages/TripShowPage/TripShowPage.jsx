@@ -1,11 +1,15 @@
 import Maps from '../../components/Maps/Maps';
 import PlaceCard from '../../components/PlaceCard/PlaceCard';
-import { useState, } from 'react'
+import PlaceCardShow from '../../components/PlaceCardShow/PlaceCardShow';
+import { useState, useCallback, useEffect, useRef } from 'react'
 
-export default function NewPlacePage({updated,setUpdated, allTrips, allPlaces,setAllPlaces,setAllTrips }) 
+export default function TripShowPage({updated,setUpdated, allTrips, allPlaces,setAllPlaces,setAllTrips }) 
 {
     const [distance, setDistance] = useState([])
     const [duration, setDuration] = useState([])
+
+
+    // console.log(allTrips)
     return (
 
         <div>
@@ -18,8 +22,9 @@ export default function NewPlacePage({updated,setUpdated, allTrips, allPlaces,se
 
         {/* <h3>New Places</h3> */}
         <div className ="flex flex-row items-center " >
-        <PlaceCard allPlaces={allPlaces} setUpdated={setUpdated} setAllPlaces={setAllPlaces} 
-        distance={distance} setDistance={setDistance}duration={duration}setDuration={setDuration}/>
+        <PlaceCardShow allPlaces={allPlaces} setUpdated={setUpdated} setAllPlaces={setAllPlaces} 
+        allTrips={allTrips} setAllTrips={setAllTrips}
+        />
         </div>
         </div>
 

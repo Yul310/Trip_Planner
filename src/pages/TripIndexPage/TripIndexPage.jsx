@@ -1,6 +1,8 @@
 import { loadAuth2WithProps } from "gapi-script";
 import { useState, useEffect } from "react";
 import * as tripAPI from "../../utilities/trips-api";
+import { useNavigate, useParams, Navigate } from 'react-router-dom';
+import {Link } from "react-router-dom";
 
 
 export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updated }) {
@@ -25,6 +27,7 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
     }
 
 
+
     return (
 
         <div>
@@ -39,22 +42,27 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
                     className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[24.5rem] text-left"
                     id="hardshadow"
                 >
-                    <h3 className="font-semibold">{trip.title}</h3>
+                    <Link to={`/trips/showTrip/${trip._id}`}>
+                    <h3 className="font-bold text-xl">{trip.title}</h3>
 
 
 
-                    <h3 className="font-semibold">{trip.date}</h3>
+                    <h3 className="font-medium">{`${trip.date}`.split('T')[0]}</h3>
 
-                    {/* {trip.place.length != 0 ?
+                    {/* tempo{trip.place.length != 0 ?
                         <h3 className="font-semibold">{trip.place[0].name.split(',')[0]}</h3> : null
                     } */}
 
                     {trip.place.length != 0 ?
-                        <h3 className="font-semibold"> 
-                        Starting from {trip.place[0].name.split(',')[0]}</h3>: null
+                        <h3 className="font-medium">
+                            Starting from {trip.place[0].name.split(',')[0]}</h3> : <h3>no destinations yet</h3>
                     }
 
-                    {/* {trip.place.length != 0 ?
+                   </Link>
+                    {/* {date = new Date(trip.date)
+                   `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`} */}
+
+                    {/* tempo  {trip.place.length != 0 ?
                         loopName(trip.place) : null
                     } */}
 

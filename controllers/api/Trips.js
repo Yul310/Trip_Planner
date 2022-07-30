@@ -6,6 +6,7 @@ module.exports = {
   create,
   index,
   deleteTrip,
+  showTrip
 
 };
 
@@ -69,8 +70,8 @@ async function deleteTrip(req, res) {
 //   console.log("edit starated")
 // }
 
-// async function show(req, res) {
-//   console.log("req.params.id")
-//   const tripList = await Trip.findById(req.params.id);
-//   res.json(tripList);
-// }
+async function showTrip(req, res) {
+  console.log("req.params.id")
+  const tripList = await Trip.findById(req.params.id);
+  res.json(tripList);
+}
