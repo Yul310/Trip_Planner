@@ -7,9 +7,10 @@ import * as placeAPI from "../../utilities/places-api";
 
 
 
-export default function PlaceCardIndex({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips }) {
+export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips }) {
 
-    const [theTrip, setTheTrip] = useState();
+    const [theTrip, setTheTrip] = useState({});
+    const [thePlaces, setThePlaces] = useState({});
     const [formData, setFormData] = useState({
         name: "",
         tripId: "",
@@ -17,7 +18,7 @@ export default function PlaceCardIndex({ allPlaces, setAllPlaces, setUpdated, up
         note: "",
     });
 
-console.log(allTrips)
+    console.log(allTrips)
 
     async function deletePlace(evt) {
         const places = allPlaces.filter((place) => place._id !== evt.target.value);
@@ -32,15 +33,19 @@ console.log(allTrips)
 
     const { id } = useParams();
 
-    function placeFinder() {
-        console.log(id)
-        console.log(allTrips)
-        const trip = allTrips.filter((trip) => trip._id === id);
-        console.log(allTrips)
-        setTheTrip(trip)
+    useEffect(
+        function placeFinder() {
+            // console.log(id)
+            // console.log(allTrips)
+            const trip = allTrips.filter((trip) => trip._id === id);
+            console.log(trip[0])
+            setTheTrip(trip[0])
+            setThePlaces(trip[0].place)
 
-    }
-    placeFinder();
+        }, [])
+
+    console.log(thePlaces[0].name)
+
 
 
 
@@ -56,7 +61,20 @@ console.log(allTrips)
 
     return (
         <>
-            <h3>{theTrip.title}</h3>
+            <div
+                className=" border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-[#AEC3B0]"
+                id="hardshadow"
+            >
+
+                <h3>{theTrip.title}</h3>
+                <h3>{`${theTrip.date}`.split('T')[0]}</h3>
+
+                {thePlaces.map((p,idx) => 
+                    <h3>{p.name}</h3>
+                )}
+               
+             
+            </div>
             {/* {allPlaces.map((place, idx) => (
                 <>
 
