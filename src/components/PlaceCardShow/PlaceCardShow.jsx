@@ -8,7 +8,7 @@ import MapsShow from '../../components/MapsShow/MapsShow';
 
 
 
-export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips }) {
+export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips, setSignal, signal }) {
     const [distance, setDistance] = useState([])
     const [duration, setDuration] = useState([])
     const [theTrip, setTheTrip] = useState({});
@@ -24,8 +24,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
     const { id } = useParams();
 
-    const trip = allTrips.filter((trip) => trip._id === id);
-    console.log(trip)
+    // const trip = allTrips.filter((trip) => trip._id === id);
+    // console.log(trip)
 
 
     async function deletePlace(evt) {
@@ -40,14 +40,16 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
         // setUpdated(!updated)
 
         const trip = allTrips.filter((trip) => trip._id === id);
+        const otherTrips = allTrips.filter((trip) => trip._id !== id);
         console.log(trip[0].place)
         const newT = trip[0].place.filter((p) => p._id !== evt.target.value)
         // console.log(evt.target.value)
         // console.log(newT)
         trip[0].place = newT;
-        console.log(trip[0].place)
-        setAllTrips(trip);
-        console.log(allTrips)
+        // console.log(trip[0].place)
+        // console.log(allTrips)
+        // setAllTrips(...otherTrips,trip);
+        // console.log(allTrips)
 
         await placeAPI.deletePlace(evt.target.value);
     }
@@ -63,8 +65,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             setThePlaces(trip[0].place)
             // setTheTrip(trip[0])
             console.log("updating thePlaces", thePlaces)
-        }, 2000)
-    }, [thePlaces, allTrips, id, theTrip])
+        }, 1000)
+    }, [thePlaces, allTrips, id, theTrip,signal])
 
     useEffect(() => {
 
@@ -73,8 +75,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
             setTheTrip(trip[0])
             console.log("updating theTrip", theTrip)
-        }, 2000)
-    }, [theTrip, allTrips, id, theTrip])
+        }, 1000)
+    }, [theTrip, allTrips, id, theTrip,signal])
 
 
 
@@ -87,7 +89,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     return (
 
         <div>
-            <MapsShow allPlaces={allPlaces} setUpdated={setUpdated} updated={updated} distance={distance} setDistance={setDistance} duration={duration} setDuration={setDuration}
+            <MapsShow allPlaces={allPlaces} setUpdated={setUpdated} updated={updated} distance={distance} setDistance={setDistance} duration={duration} setDuration={setDuration} signal={signal} setSignal={setSignal} 
                 allTrips={allTrips}
                 setAllTrips={setAllTrips}
                 theTrip={theTrip}

@@ -15,7 +15,7 @@ const containerStyle = {
 const google = window.google   
 
 
-export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration,allTrips,theTrip,setTheTrip,thePlaces,setThePlaces}) 
+export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration,allTrips,theTrip,thePlaces, setSignal, signal}) 
 {
   // const mapRef = useRef<GoogleMap>(null);
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
@@ -24,7 +24,7 @@ export default function Map({allPlaces,updated,setUpdated,distance,setDistance, 
   // const [duration, setDuration] = useState([])
   const [formData, setFormData] = useState({
     name: "",
-    tripId: "",
+    tripId: theTrip._id,
     staying: "",
     note: "",
   });
@@ -66,7 +66,7 @@ if (!isLoaded) return <div>Loading...</div>;
 
   async function findPlace() {
      console.log(originRef.current.value)
-    // originRef.current.value = formData.name;
+ 
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -75,8 +75,15 @@ if (!isLoaded) return <div>Loading...</div>;
     })
     setFormData({ ...formData, name: results.request.origin.query })
     console.log(formData)
-    placeAPI.newPlace(formData)
+    
+  placeAPI.newPlace(formData)
+    setSignal(!signal)
     setUpdated(!updated)
+    console.log(allPlaces)
+    console.log(allTrips)
+    console.log(theTrip)
+    console.log(thePlaces)
+    
     originRef = ("")
     setFormData({
       name: "",
@@ -85,31 +92,6 @@ if (!isLoaded) return <div>Loading...</div>;
       note: "",
     })
   }
-
-
-
-  // async function calculateRoute() {
-  //   if (originRef.current.value === '' || destiantionRef.current.value === '') {
-  //     return
-  //   }
-
-  //   const directionsService = new google.maps.DirectionsService()
-  //   const results = await directionsService.route({
-  //     origin: originRef.current.value,
-
-  //     destination: destiantionRef.current.value,
-
-  //     travelMode: google.maps.TravelMode.DRIVING,
-
-  //   })
-   
-  //   setDirectionsResponse(results)
-  //   setDistance(results.routes[0].legs[0].distance.text)
-  //   setDuration(results.routes[0].legs[0].duration.text)
-
-  //   // setFormData({ time: duration, distance: distance });
-  // }
-
 
 
 
@@ -179,9 +161,10 @@ if (!isLoaded) return <div>Loading...</div>;
   return (
 
     <>
+    
       <div className=" flex flex-row items-center justify-evenly">
-        <Autocomplete className="m-0 p-0"   >
-          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name"/>
+        <Autocomplete className="m-0 p-0" >
+          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name"   />
         </Autocomplete>
 
 
@@ -222,7 +205,7 @@ if (!isLoaded) return <div>Loading...</div>;
 
       </div>
 
-     
+   
 
       < GoogleMap
         center={currentLocation}
