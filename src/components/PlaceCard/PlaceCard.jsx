@@ -57,16 +57,13 @@ export default function PlaceCard({ allPlaces, setAllPlaces, distance, duration,
                     >
                         <form action="" onChange={handleChange}>
                             <h3 className="font-bold" value={formData.name}>{place.name.split(',')[0].toUpperCase()}</h3>
-                            <p className="font-light">{place.name.split(',')}</p>
+                            <p className="font-light">{place.name}</p>
 
 
                             <h3 className="font-bold">Staying Time: </h3>
                             {place.staying ? <p >{place.staying}</p> : <p className="font-light text-sm"  >No information yet</p>}
 
-                            {/* <input type="text" name="staying" className="w-36 h-8 text-align:start " value={place.staying} placeholder={place.staying} onChange={handleChange} style={editMode} /> */}
-
-{/* 
-                            <textarea name="staying" id="staying" cols="5" rows="5" placeholder={place.staying} className="w-36 h-8 text-align:start " value={formData.staying} ></textarea> */}
+                
 
 
                             <h3 className="font-bold">Note: </h3>
