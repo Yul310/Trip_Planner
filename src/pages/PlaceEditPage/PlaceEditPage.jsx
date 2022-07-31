@@ -47,7 +47,7 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
     // console.log(place);
     placeAPI.editPlace(evt.target.value, formData);
     redirectToTrip();
-    // setUpdated(!updated)
+    setUpdated(!updated)
 
 
   }
@@ -55,7 +55,7 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
 
  
   function redirectToTrip() {
-    let path = '/trips/places/'
+    let path = `/trips/showTrip/${thePlace[0].tripId}`
     navigate(path)
   
   }
