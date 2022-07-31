@@ -15,7 +15,7 @@ const containerStyle = {
 const google = window.google   
 
 
-export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration,allTrips,setAllTrips}) 
+export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration,allTrips,theTrip,setTheTrip,thePlaces,setThePlaces}) 
 {
   // const mapRef = useRef<GoogleMap>(null);
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
@@ -116,17 +116,17 @@ if (!isLoaded) return <div>Loading...</div>;
     async function calculateAllRoute() {
    
     
-        console.log(allPlaces)
+        console.log(thePlaces)
         setDistance('')
         setDuration('')
         
-        for (let i = 0; i < allPlaces.length-1; i++) {
+        for (let i = 0; i < thePlaces.length-1; i++) {
           const directionsService = new window.google.maps.DirectionsService()
             const results = await directionsService.route({
            
-                origin: allPlaces[i].name,
+                origin: thePlaces[i].name,
 
-                destination: allPlaces[i + 1].name,
+                destination: thePlaces[i + 1].name,
 
                 travelMode: window.google.maps.TravelMode.DRIVING,
 
@@ -138,7 +138,8 @@ if (!isLoaded) return <div>Loading...</div>;
       
             console.log(distance)
             console.log(duration)
-            // setFormData({ time: duration, distance: distance });
+
+            
         }
         
     }
