@@ -51,8 +51,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             setThePlaces(trip[0].place)
             // setTheTrip(trip[0])
             console.log("updating thePlaces", thePlaces)
-        }, 1000)
-    }, [thePlaces, allTrips, id])
+        }, 2000)
+    }, [thePlaces, allTrips, id,theTrip])
 
     useEffect(() => {
 
@@ -61,8 +61,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
             setTheTrip(trip[0])
             console.log("updating theTrip", theTrip)
-        }, 1000)
-    }, [theTrip, allTrips, id])
+        }, 2000)
+    }, [theTrip, allTrips, id,theTrip])
 
 
 

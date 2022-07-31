@@ -14,7 +14,7 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
     note: "",
   });
 
-
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const thePlace = allPlaces.filter((place) => place._id === id);
@@ -53,9 +53,16 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
   }
 
 
-  let navigate = useNavigate();
+ 
   function redirectToTrip() {
     let path = '/trips/places/'
+    navigate(path)
+  
+  }
+
+  function redirectToTripShow() {
+    // console.log(thePlace[0].tripId)
+    let path = `/trips/showTrip/${thePlace[0].tripId}`
     navigate(path)
   }
 
@@ -108,6 +115,7 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
 
         </form>
         <button onClick={editPlace} value={thePlace[0]._id} className="font-bold text-sm"> Save </button>
+        <button onClick={redirectToTripShow} value={thePlace[0]._id} className="font-bold text-sm"> Cancel  </button>
 
         <p>&nbsp;</p>
         <button onClick={deletePlace} value={thePlace[0]._id} className="font-bold text-sm"> Delete Place </button>
