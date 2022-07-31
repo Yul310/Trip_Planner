@@ -7,7 +7,7 @@ export default function TripShowPage({updated,setUpdated, allTrips, allPlaces,se
 {
     // const [distance, setDistance] = useState([])
     // const [duration, setDuration] = useState([])
-    const [signal, setSignal] = useState(false);
+ 
 
 
     // console.log(allTrips)
@@ -24,7 +24,7 @@ export default function TripShowPage({updated,setUpdated, allTrips, allPlaces,se
         {/* <h3>New Places</h3> */}
         <div className ="flex flex-row items-center " >
         <PlaceCardShow allPlaces={allPlaces} setUpdated={setUpdated} setAllPlaces={setAllPlaces} 
-        allTrips={allTrips} setAllTrips={setAllTrips} setSignal={setSignal} signal={signal}
+        allTrips={allTrips} setAllTrips={setAllTrips} updated={updated}
         />
         </div>
         </div>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import 'react-edit-text/dist/index.css';
 import { Link, useParams } from "react-router-dom";
 import * as placeAPI from "../../utilities/places-api";
+import * as tripAPI from "../../utilities/trips-api";
 import MapsShow from '../../components/MapsShow/MapsShow';
 
 
@@ -13,12 +14,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     const [duration, setDuration] = useState([])
     const [theTrip, setTheTrip] = useState({});
     const [thePlaces, setThePlaces] = useState([]);
-    const [formData, setFormData] = useState({
-        name: "",
-        tripId: "",
-        staying: "",
-        note: "",
-    });
+
 
 
 
@@ -26,6 +22,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
     // const trip = allTrips.filter((trip) => trip._id === id);
     // console.log(trip)
+
 
 
     async function deletePlace(evt) {
@@ -66,7 +63,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             // setTheTrip(trip[0])
             console.log("updating thePlaces", thePlaces)
         }, 1000)
-    }, [thePlaces, allTrips, id, theTrip,signal])
+    }, [thePlaces, allTrips, id, theTrip, signal])
 
     useEffect(() => {
 
@@ -76,7 +73,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             setTheTrip(trip[0])
             console.log("updating theTrip", theTrip)
         }, 1000)
-    }, [theTrip, allTrips, id, theTrip,signal])
+    }, [theTrip, allTrips, id, theTrip, signal])
 
 
 
@@ -89,7 +86,18 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     return (
 
         <div>
-            <MapsShow allPlaces={allPlaces} setUpdated={setUpdated} updated={updated} distance={distance} setDistance={setDistance} duration={duration} setDuration={setDuration} signal={signal} setSignal={setSignal} 
+            <MapsShow
+               
+                allPlaces={allPlaces}
+                setAllPlaces={setAllPlaces}
+                setUpdated={setUpdated}
+                updated={updated}
+                distance={distance}
+                setDistance={setDistance}
+                duration={duration}
+                setDuration={setDuration}
+                signal={signal}
+                setSignal={setSignal}
                 allTrips={allTrips}
                 setAllTrips={setAllTrips}
                 theTrip={theTrip}

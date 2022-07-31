@@ -1,9 +1,10 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { GoogleMap, useJsApiLoader, useLoadScript,MarkerF, Autocomplete, DirectionsRenderer, InfoWindow, Marker,MarkerClusterer } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, useLoadScript, MarkerF, Autocomplete, DirectionsRenderer, InfoWindow, Marker, MarkerClusterer } from '@react-google-maps/api';
 import "./Map.css"
 import MapStyles from './MapStyles'
 import * as placeAPI from "../../utilities/places-api";
+
 // import * as destinationAPI from "../../utilities/destinations-api";
 
 
@@ -12,16 +13,14 @@ const containerStyle = {
   height: '50vh',
   margin: '0 auto',
 }
-const google = window.google   
+const google = window.google
 
 
-export default function Map({allPlaces,updated,setUpdated,distance,setDistance, duration, setDuration,allTrips,theTrip,thePlaces, setSignal, signal}) 
-{
-  // const mapRef = useRef<GoogleMap>(null);
+export default function Map({allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces}) {
+
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
-  // const [distance, setDistance] = useState([])
-  // const [duration, setDuration] = useState([])
+  const [newPlace, setNewPlace] = useState([])
   const [formData, setFormData] = useState({
     name: "",
     tripId: theTrip._id,
@@ -33,7 +32,7 @@ export default function Map({allPlaces,updated,setUpdated,distance,setDistance, 
     lng: 2.2945
   })
 
-// const onLoad = useCallback((map) =>(mapRef.current = map), []);
+  // const onLoad = useCallback((map) =>(mapRef.current = map), []);
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
   /** @type React.MutableRefObject<HTMLInputElement> */
@@ -42,31 +41,25 @@ export default function Map({allPlaces,updated,setUpdated,distance,setDistance, 
   const API_KEY = process.env.REACT_APP_MAPS_API_KEY
 
 
+
   const { isLoaded } = useLoadScript({
-   
+
     googleMapsApiKey: API_KEY,
     libraries: ['places'],
 
   })
-if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) return <div>Loading...</div>;
 
 
 
-
-
-
-
-
-
-//////////////////////////////////////
-/////  Google API Functions    ///////
-//////////////////////////////////////
-
+  //////////////////////////////////////
+  /////  Google API Functions    ///////
+  //////////////////////////////////////
 
 
   async function findPlace() {
-     console.log(originRef.current.value)
- 
+    // console.log(originRef.current.value)
+
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -74,57 +67,76 @@ if (!isLoaded) return <div>Loading...</div>;
       travelMode: window.google.maps.TravelMode.DRIVING,
     })
     setFormData({ ...formData, name: results.request.origin.query })
-    console.log(formData)
-    
-  placeAPI.newPlace(formData)
-    setSignal(!signal)
+    // console.log(formData)
+
     setUpdated(!updated)
-    console.log(allPlaces)
-    console.log(allTrips)
-    console.log(theTrip)
-    console.log(thePlaces)
-    
-    originRef = ("")
+    // setAllPlaces(formData)
+    placeAPI.newPlace(formData)
+   
+    // const newP = placeAPI.getAll();
+
+  
+
     setFormData({
       name: "",
       tripId: "",
       staying: "",
       note: "",
     })
+
+
   }
 
 
 
-    async function calculateAllRoute() {
-   
-    
-        console.log(thePlaces)
-        setDistance('')
-        setDuration('')
-        
-        for (let i = 0; i < thePlaces.length-1; i++) {
-          const directionsService = new window.google.maps.DirectionsService()
-            const results = await directionsService.route({
-           
-                origin: thePlaces[i].name,
+  // const thePlace = allPlaces.filter((place) => place._id !== evt.target.value);
+  // console.log(thePlace);
+  // setThePlaces(thePlace);
 
-                destination: thePlaces[i + 1].name,
+  // const places = allPlaces.filter((place) => place._id !== evt.target.value);
+  // setAllPlaces(places);
 
-                travelMode: window.google.maps.TravelMode.DRIVING,
+  // const trip = allTrips.filter((trip) => trip._id === id);
+  // const otherTrips = allTrips.filter((trip) => trip._id !== id);
+  // console.log(trip[0].place)
+  // const newT = trip[0].place.filter((p) => p._id !== evt.target.value)
+  // trip[0].place = newT;
 
-            })
 
-            setDirectionsResponse(results)
-            setDistance(distance =>[...distance, results.routes[0].legs[0].distance.text])
-            setDuration(duration =>[...duration, results.routes[0].legs[0].duration.text])
-      
-            console.log(distance)
-            console.log(duration)
 
-            
-        }
-        
+
+
+
+  async function calculateAllRoute() {
+
+
+    console.log(thePlaces)
+    setDistance('')
+    setDuration('')
+
+    for (let i = 0; i < thePlaces.length - 1; i++) {
+      const directionsService = new window.google.maps.DirectionsService()
+      const results = await directionsService.route({
+
+        origin: thePlaces[i].name,
+
+        destination: thePlaces[i + 1].name,
+
+        travelMode: window.google.maps.TravelMode.DRIVING,
+
+      })
+
+      setDirectionsResponse(results)
+      setDistance(distance => [...distance, results.routes[0].legs[0].distance.text])
+      setDuration(duration => [...duration, results.routes[0].legs[0].duration.text])
+
+      console.log(distance)
+      console.log(duration)
+
+
     }
+
+  }
 
 
 
@@ -137,10 +149,10 @@ if (!isLoaded) return <div>Loading...</div>;
     destiantionRef.current.value = ''
   }
 
-  
-//////////////////////////////////////
-/////  Handle the click evens ///////
-//////////////////////////////////////
+
+  //////////////////////////////////////
+  /////  Handle the click evens ///////
+  //////////////////////////////////////
 
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -150,8 +162,8 @@ if (!isLoaded) return <div>Loading...</div>;
 
   function handleChange(evt) {
     console.log(originRef.current.value)
-    
-    setFormData({ ...formData, [evt.target.name]: evt.target.value, name:originRef.current.value });
+
+    setFormData({ ...formData, [evt.target.name]: evt.target.value, name: originRef.current.value });
     // setFormData({  note: Autocomplete.getPlace() });
     console.log(formData);
 
@@ -161,32 +173,32 @@ if (!isLoaded) return <div>Loading...</div>;
   return (
 
     <>
-    
+
       <div className=" flex flex-row items-center justify-evenly">
         <Autocomplete className="m-0 p-0" >
-          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name"   />
+          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name" />
         </Autocomplete>
 
 
         <label className="font-light text-left text-lg h-1/2 px-2 py-2">
-            Trip Name
-          </label>
+          Trip Name
+        </label>
 
-          <select
-            name="tripId"
-            value={formData.tripId}
-            onChange={handleChange}
-            className="font-extralight text-2l text-left h-1/2 px-2 py-2 bg-[#f7f7f2]"
-          >
-            <option >Select a trip</option>   
-            {allTrips.map((trip) => (
-              <option value={trip._id} key={trip._id}>
-                {trip.title}
-              </option>
-            ))}
+        <select
+          name="tripId"
+          value={formData.tripId}
+          onChange={handleChange}
+          className="font-extralight text-2l text-left h-1/2 px-2 py-2 bg-[#f7f7f2]"
+        >
+          <option >Select a trip</option>
+          {allTrips.map((trip) => (
+            <option value={trip._id} key={trip._id}>
+              {trip.title}
+            </option>
+          ))}
 
-    
-          </select>
+
+        </select>
 
 
 
@@ -205,7 +217,7 @@ if (!isLoaded) return <div>Loading...</div>;
 
       </div>
 
-   
+
 
       < GoogleMap
         center={currentLocation}

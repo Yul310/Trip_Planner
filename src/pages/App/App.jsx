@@ -81,6 +81,7 @@ useEffect(
         <Route path="/trips/editPlace/:id" element={<PlaceEditPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
         allTrips={allTrips}
         setAllTrips={setAllTrips}/>} />
+        
         <Route path="/trips/showTrip/:id" element={<TripShowPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
         allTrips={allTrips}
         setAllTrips={setAllTrips}/>} />
