@@ -8,6 +8,8 @@ import {Link } from "react-router-dom";
 export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updated }) {
 
 
+    // const [theTrip, setTheTrip] = useState({});
+    // const [thePlaces, setThePlaces] = useState({});
 
 
     async function deleteTrip(evt) {
@@ -27,6 +29,21 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
     }
 
 
+// function tripFinder(evt){
+//     const trip = allTrips.filter((trip) => trip._id === evt.targe.value);
+    
+//     setTheTrip(trip[0])
+//     console.log(trip[0].place)
+//     setThePlaces(trip[0].place)
+//     console.log(thePlaces)
+//     console.log(theTrip)
+// }
+
+
+function update(){
+    setUpdated(!updated)
+}
+
 
     return (
 
@@ -42,7 +59,7 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
                     className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[24.5rem] text-left"
                     id="hardshadow"
                 >
-                    <Link to={`/trips/showTrip/${trip._id}`}>
+                    <Link to={`/trips/showTrip/${trip._id}`} value={trip._id} onClick={update} >
                     <h3 className="font-bold text-xl">{trip.title}</h3>
 
 
