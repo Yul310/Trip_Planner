@@ -46,7 +46,9 @@ function update(){
 
 
     return (
-
+        <>
+        
+{allTrips.length?
         <div>
             <h1>My Trip</h1>
 
@@ -105,7 +107,15 @@ function update(){
 
 
 
+        </div>: 
+        
+        <div className="m-80">
+        <h3 className=" text-2xl font-bold text-[#CFFCFF]"> No Trip has been created. </h3>
+        <Link to="/trips/new">
+        <button className="m-10 py-1 px-3 text-lg text-[#4C5454]">Start a New Trip</button>
+        </Link>
         </div>
-
+}
+</>
     )
 }
