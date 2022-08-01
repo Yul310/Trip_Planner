@@ -128,7 +128,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                             <div className="flex flex-row w-500 h-200">
                                 <Link to={`/trips/editPlace/${p._id}`} id="linkButton" className="font-bold text-sm text-black w-200 h-50"> Edit </Link>
                                 <p>&nbsp;</p>
-                                <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-black w-500 h-50 p-"> Delete</button>
+                                <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-black w-500 h-50"> Delete</button>
                             </div>
 
                         </div>
