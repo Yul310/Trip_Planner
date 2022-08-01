@@ -23,7 +23,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     // const trip = allTrips.filter((trip) => trip._id === id);
     // console.log(trip)
 
-
+//
 
     async function deletePlace(evt) {
 
