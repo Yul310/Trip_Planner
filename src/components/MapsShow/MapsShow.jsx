@@ -171,7 +171,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
     <>
       {/* items-center justify-evenly */}
-      <div className=" grid grid-cols-6 ">
+      <div className=" grid grid-cols-6 m-3">
         <Autocomplete className=" col-start-3 col-end-5" >
           <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name" />
         </Autocomplete>
@@ -202,7 +202,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
         <div className=" col-start-5" >
 
-          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#598392] "  >Add To Trip</button>
+          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#AAEFDF] text-[#4C5454] "  >Add To Trip</button>
 
         </div>
         {/* <Autocomplete className="m-0 p-0">
@@ -210,7 +210,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
         </Autocomplete> */}
 
         <div className=" col-start-6" >
-          <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-[#598392] col-start-6" >ShowRoute</button>
+          <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-[#AAEFDF] col-start-6 text-[#4C5454]" >ShowRoute</button>
         </div>
       </div>
 

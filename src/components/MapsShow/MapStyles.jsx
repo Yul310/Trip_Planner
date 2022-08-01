@@ -73,7 +73,7 @@ export default [
                 "color": "#000000"
             },
             {
-                "lightness": 20
+                "lightness": 25
             }
         ]
     },
@@ -85,7 +85,7 @@ export default [
                 "color": "#000000"
             },
             {
-                "lightness": 21
+                "lightness": 24
             }
         ]
     },
@@ -157,10 +157,15 @@ export default [
         "elementType": "geometry",
         "stylers": [
             {  
-                "color": "#598392"
+                "color": "#CFFCFF"
             },
             {
-                "lightness": -50
+                "saturation": -90
+               
+            },
+            {
+                
+                "lightness": -70
             }
         ]
     }

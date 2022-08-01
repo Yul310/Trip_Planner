@@ -87,7 +87,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
         <div>
             <MapsShow
-               
+
                 allPlaces={allPlaces}
                 setAllPlaces={setAllPlaces}
                 setUpdated={setUpdated}
@@ -104,40 +104,45 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                 thePlaces={thePlaces}
 
             />
-
-            <h3>{theTrip.title}</h3>
-            <h3>{`${theTrip.date}`.split('T')[0]}</h3>
             <div className="flex flex-row" >
+                <h3 id="subtitle" className="font-bold text-xl text-[#CFFCFF] mt-2 ml-5">{theTrip.title}  </h3>
+
+                <h3 className="font-bold text-xl text-[#CFFCFF] mt-2 ml-5">{`${theTrip.date}`.split('T')[0]}</h3>
+            </div>
+            <div className="flex flex-row items-center" >
+
+
                 {thePlaces.map((p, idx) => (
                     <>
                         <div
 
-                            className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-[#AEC3B0]"
+                            className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-white"
                             id="hardshadow"
                         >
-                            <h3 className="font-bold">{p.name.split(',')[0]}</h3>
-                            <h3 className="font-bold">Staying Time: </h3>
-                            {p.staying ? <p >{p.staying}</p> : <p className="font-light text-sm"  >No information yet</p>}
+                            <h3 id="subtitle" className="font-bold text-lg text-[#4C5454]">{p.name.split(',')[0]}</h3>
+                            <h3 className="font-bold text-[#4C5454]">Staying Time: </h3>
+                            {p.staying ? <p >{p.staying}</p> : <p className="font-light text-sm text-[#4C5454]"  >No information yet</p>}
 
-                            <h3 className="font-bold">Note: </h3>
-                            {p.note ? <p >{p.note}</p> : <p className="font-light text-sm"  >No note yet</p>}
-
-                            <Link to={`/trips/editPlace/${p._id}`} id="linkButton" className="font-bold text-sm "> Edit </Link>
-                            <p>&nbsp;</p>
-                            <button onClick={deletePlace} value={p._id} className="font-bold text-sm"> Delete</button>
+                            <h3 className="font-bold text-[#4C5454] my-px">Note: </h3>
+                            {p.note ? <p className="font-light text-sm text-[#4C5454] mb-3">{p.note}</p> : <p className="font-light text-sm text-[#4C5454] mb-3"  >No note yet</p>}
+                            <div className="flex flex-row w-500 h-200">
+                                <Link to={`/trips/editPlace/${p._id}`} id="linkButton" className="font-bold text-sm text-[#4C5454] w-200 h-50"> Edit </Link>
+                                <p>&nbsp;</p>
+                                <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-[#4C5454] w-500 h-50 p-"> Delete</button>
+                            </div>
 
                         </div>
 
                         {distance[idx] ?
                             <div className=" flex-column w-80 h-30 ">
-                                <h1>{"->"}</h1>
+                                <h1 className="font-black text-sm text-[#CFFCFF]">{"->"}</h1>
                                 <p>&nbsp;</p>
 
-                                <h3 className="font-bold text-sm">{distance[idx]}  </h3>
-                                <h3 className="font-bold text-sm"> {duration[idx]}</h3>
+                                <h3 className="font-black text-sm text-[#CFFCFF]">{distance[idx]}  </h3>
+                                <h3 className="font-black text-sm text-[#CFFCFF]"> {duration[idx]}</h3>
 
                                 <p>&nbsp;</p>
-                                <h1>{"->"}</h1>
+                                <h1 className="font-black text-sm text-[#CFFCFF]">{"->"}</h1>
                             </div>
                             : null}
 

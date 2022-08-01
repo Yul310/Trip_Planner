@@ -157,10 +157,10 @@ export default [
         "elementType": "geometry",
         "stylers": [
             {  
-                "color": "#598392"
+                "color": "#CFFCFF"
             },
             {
-                "lightness": -50
+                "lightness": -0
             }
         ]
     }
