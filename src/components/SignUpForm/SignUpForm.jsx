@@ -51,22 +51,22 @@ export default class SignUpForm extends Component {
             
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required
                placeholder="Name"
-              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#f7f7f2] focus:border-black focus:ring-0"
+              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#f7f7f2] focus:border-black focus:ring-0 bg-[#FFFDE0]"
             />
          
             <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required
               placeholder="Email"
-              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#f7f7f2] focus:border-black focus:ring-0"
+              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#FFFDE0] focus:border-black focus:ring-0"
             />
             
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required
               placeholder="Password"
-              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#f7f7f2] focus:border-black focus:ring-0"
+              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#FFFDE0] focus:border-black focus:ring-0"
             />
             
             <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required
               placeholder="Password Confirm"
-              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#f7f7f2] focus:border-black focus:ring-0"
+              className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-[#FFFDE0] focus:border-black focus:ring-0"
             />
             <button type="submit" disabled={disable}
             className="my-1.5 bg-[#1f1f1f] text-white font-medium py-2 px-4 rounded hover:ring hover:ring-orange-400"

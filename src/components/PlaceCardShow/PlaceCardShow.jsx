@@ -9,12 +9,12 @@ import MapsShow from '../../components/MapsShow/MapsShow';
 
 
 
-export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips,  }) {
+export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips, }) {
     const [distance, setDistance] = useState([])
     const [duration, setDuration] = useState([])
     const [theTrip, setTheTrip] = useState({});
     const [thePlaces, setThePlaces] = useState([]);
-
+    const [updateMap, setUpdateMap] = useState(false);
 
 
 
@@ -43,41 +43,34 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
         // console.log(evt.target.value)
         // console.log(newT)
         trip[0].place = newT;
-        // console.log(trip[0].place)
-        // console.log(allTrips)
-        // setAllTrips(...otherTrips,trip);
-        // console.log(allTrips)
+
 
         await placeAPI.deletePlace(evt.target.value);
     }
 
 
+    useEffect(() => {
+
+
+        const trip = allTrips.filter((trip) => trip._id === id);
+        console.log(trip[0])
+        setTheTrip(trip[0])
+        console.log("updating theTrip", theTrip)
+
+    }, [theTrip, allTrips, allPlaces, id, theTrip, updateMap])
+
 
 
     useEffect(() => {
 
-        setTimeout(() => {
-            const trip = allTrips.filter((trip) => trip._id === id);
-            console.log(trip[0].place)
-            setThePlaces(trip[0].place)
-            // setTheTrip(trip[0])
-            console.log("updating thePlaces", thePlaces)
-        }, 2000)
-    }, [thePlaces, allTrips, id, theTrip])
 
-    useEffect(() => {
+        const trip = allTrips.filter((trip) => trip._id === id);
+        console.log(trip[0].place)
+        setThePlaces(trip[0].place)
+        // setTheTrip(trip[0])
+        console.log("updating thePlaces", thePlaces)
 
-        setTimeout(() => {
-            const trip = allTrips.filter((trip) => trip._id === id);
-
-            setTheTrip(trip[0])
-            console.log("updating theTrip", theTrip)
-        }, 2000)
-    }, [theTrip, allTrips, id, theTrip])
-
-
-
-
+    }, [thePlaces, allTrips, allPlaces, id, theTrip, updateMap])
 
 
 
@@ -96,17 +89,16 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                 setDistance={setDistance}
                 duration={duration}
                 setDuration={setDuration}
-             
-             
                 allTrips={allTrips}
                 setAllTrips={setAllTrips}
                 theTrip={theTrip}
                 thePlaces={thePlaces}
+                updateMap={updateMap}
+                setUpdateMap={setUpdateMap}
 
             />
             <div className="flex flex-row" >
                 <h3 id="subtitle" className="font-bold text-xl text-[#CFFCFF] mt-2 ml-5">{theTrip.title}  </h3>
-
                 <h3 className="font-bold text-xl text-[#CFFCFF] mt-2 ml-5">{`${theTrip.date}`.split('T')[0]}</h3>
             </div>
             <div className="flex flex-row items-center" >
@@ -126,9 +118,9 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                             <h3 className="font-bold text-[#4C5454] my-px">Note: </h3>
                             {p.note ? <p className="font-light text-sm text-black mb-3">{p.note}</p> : <p className="font-light text-sm text-black mb-3"  >No note yet</p>}
                             <div className="flex flex-row w-500 h-200">
-                                <Link to={`/trips/editPlace/${p._id}`} id="linkButton" className="font-bold text-sm text-black w-200 h-50"> Edit </Link>
+                                <Link to={`/trips/editPlace/${p._id}`}  > <button className="font-bold text-sm text-black w-200 h-50 border-[2px]">Edit </button> </Link>
                                 <p>&nbsp;</p>
-                                <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-black w-500 h-50"> Delete</button>
+                                <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-black w-500 h-50 border-[2px]"> Delete</button>
                             </div>
 
                         </div>

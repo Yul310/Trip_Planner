@@ -70,16 +70,14 @@ export default function App() {
           />
           <Routes>
 
+
+
+            <Route path="/" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user}/>} />
+
+
             <Route path="/trips/new" element={<NewTripPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} />} />
 
-            {/* <Route path="/trips/places" element={<NewPlacePage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
-        allTrips={allTrips}
-        setAllTrips={setAllTrips}
-        />} /> */}
-
-            <Route path="/" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} />} />
-
-            <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} />} />
+            <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user}/>} />
 
             <Route path="/trips/editPlace/:id" element={<PlaceEditPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
               allTrips={allTrips}

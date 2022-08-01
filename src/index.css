@@ -18,6 +18,15 @@
 }
 
 
+#dash {
+  border: none;
+  border-top: 1px dotted #4C5454;
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 50%;
+}
+
 #title{
 
   /* font-family: 'Alfa Slab One', cursive; */

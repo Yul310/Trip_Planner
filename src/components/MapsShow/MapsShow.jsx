@@ -16,7 +16,7 @@ const containerStyle = {
 const google = window.google
 
 
-export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces, setAllTrips, setAllPlaces }) {
+export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces,updateMap, setUpdateMap }) {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
@@ -56,15 +56,15 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
   /////  Google API Functions    ///////
   //////////////////////////////////////
 
-  function handleChange() {
-    console.log(originRef.current.value)
-    console.log(theTrip._id)
+  // function handleChange() {
+  //   console.log(originRef.current.value)
+  //   console.log(theTrip._id)
 
-    setFormData({ name: "", tripId: theTrip._id, staying: "", note: "" });
-    // setFormData({  note: Autocomplete.getPlace() });
-    console.log(formData);
+  //   setFormData({ name: "", tripId: theTrip._id, staying: "", note: "" });
+  //   // setFormData({  note: Autocomplete.getPlace() });
+  //   console.log(formData);
 
-  }
+  // }
 
 
   async function findPlace() {
@@ -85,6 +85,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
  
     placeAPI.newPlace(theData)
     setUpdated(!updated)
+    setUpdateMap(!updateMap)
     console.log("updated?really?")
 
     originRef.current.value = ''
@@ -97,8 +98,6 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
 
   async function calculateAllRoute() {
-
-
     console.log(thePlaces)
     setDistance('')
     setDuration('')
@@ -121,10 +120,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
       console.log(distance)
       console.log(duration)
-
-
     }
-
   }
 
 
@@ -174,7 +170,6 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
         {/* <label className="font-light text-left text-lg h-1/2 px-2 py-2">
           Trip Name
         </label>
-
         <select
           name="tripId"
           value={formData.tripId}
@@ -187,8 +182,6 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
               {trip.title}
             </option>
           ))}
-
-
         </select> */}
 
 
