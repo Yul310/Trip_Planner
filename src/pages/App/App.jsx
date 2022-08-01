@@ -3,7 +3,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from "../../components/NavBar/NavBar";
 import { useState, useEffect, useRef } from "react";
-import { Routes,Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import NewPlacePage from "../NewPlacePage/NewPlacePage";
 import NewTripPage from "../NewTripPage/NewTripPage";
@@ -17,7 +17,7 @@ import * as placeAPI from "../../utilities/places-api";
 
 
 export default function App() {
- 
+
   const [user, setUser] = useState(getUser());
   const [allTrips, setAllTrips] = useState([]);
   const [allPlaces, setAllPlaces] = useState([]);
@@ -25,15 +25,15 @@ export default function App() {
 
 
 
-/////////////////   
-// Get All Trips
-/////////////////
-   useEffect(
+  /////////////////   
+  // Get All Trips
+  /////////////////
+  useEffect(
     function () {
       async function getTrips() {
         const trips = await tripAPI.getAll();
         setAllTrips(trips);
-          console.log(trips);
+        console.log(trips);
       }
       getTrips();
     },
@@ -41,20 +41,20 @@ export default function App() {
   );
 
 
-/////////////////   
-// Get All Trips
-/////////////////
-useEffect(
-  function () {
-    async function getPlaces() {
-      const places = await placeAPI.getAll();
-      setAllPlaces(places);
+  /////////////////   
+  // Get All Trips
+  /////////////////
+  useEffect(
+    function () {
+      async function getPlaces() {
+        const places = await placeAPI.getAll();
+        setAllPlaces(places);
         console.log(places);
-    }
-    getPlaces();
-  },
-  [updated]
-);
+      }
+      getPlaces();
+    },
+    [updated]
+  );
 
 
 
@@ -62,36 +62,38 @@ useEffect(
 
   return (
     <main className="App">
-       { user ?
-      <div>
-       <NavBar
-       user={user}
-       setUser={setUser}
-      />
-      <Routes>
-        
-        <Route path="/trips/new" element={<NewTripPage updated={updated}setUpdated={setUpdated} allPlaces={allPlaces}/>} />
+      {user ?
+        <div>
+          <NavBar
+            user={user}
+            setUser={setUser}
+          />
+          <Routes>
 
-        {/* <Route path="/trips/places" element={<NewPlacePage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
+            <Route path="/trips/new" element={<NewTripPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} />} />
+
+            {/* <Route path="/trips/places" element={<NewPlacePage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
         allTrips={allTrips}
         setAllTrips={setAllTrips}
         />} /> */}
 
-        <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips}setUpdated={setUpdated} updated={updated} />} />
+            <Route path="/" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} />} />
 
-        <Route path="/trips/editPlace/:id" element={<PlaceEditPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
-        allTrips={allTrips}
-        setAllTrips={setAllTrips}/>} />
-        
-        <Route path="/trips/showTrip/:id" element={<TripShowPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
-        allTrips={allTrips}
-        setAllTrips={setAllTrips}/>} />
-        
-      </Routes>
-      </div>
-      :
-      <AuthPage setUser={setUser} />
-    }
+            <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} />} />
+
+            <Route path="/trips/editPlace/:id" element={<PlaceEditPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
+              allTrips={allTrips}
+              setAllTrips={setAllTrips} />} />
+
+            <Route path="/trips/showTrip/:id" element={<TripShowPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
+              allTrips={allTrips}
+              setAllTrips={setAllTrips} />} />
+
+          </Routes>
+        </div>
+        :
+        <AuthPage setUser={setUser} />
+      }
     </main>
   );
 }

@@ -29,16 +29,6 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
     }
 
 
-// function tripFinder(evt){
-//     const trip = allTrips.filter((trip) => trip._id === evt.targe.value);
-    
-//     setTheTrip(trip[0])
-//     console.log(trip[0].place)
-//     setThePlaces(trip[0].place)
-//     console.log(thePlaces)
-//     console.log(theTrip)
-// }
-
 
 function update(){
     setUpdated(!updated)
@@ -49,8 +39,8 @@ function update(){
         <>
         
 {allTrips.length?
-        <div>
-            <h1>My Trip</h1>
+        <div className="flex flex-row">
+          
 
             {allTrips.map((trip, idx) => (
 
@@ -58,40 +48,32 @@ function update(){
 
                 <div
                     key={idx}
-                    className="border-black border-[1px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[24.5rem] text-left"
+                    className="m-5 border-black border-[2px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-white"
                     id="hardshadow"
                 >
                     <Link to={`/trips/showTrip/${trip._id}`} value={trip._id} onClick={update} >
-                    <h3 className="font-bold text-xl">{trip.title}</h3>
+                    <h3 id="subtitle" className="font-bold text-lg text-black">{trip.title}</h3>
 
 
 
-                    <h3 className="font-medium">{`${trip.date}`.split('T')[0]}</h3>
+                    <h3 className="font-bold text-[#4C5454]">{`${trip.date}`.split('T')[0]}</h3>
 
-                    {/* tempo{trip.place.length != 0 ?
-                        <h3 className="font-semibold">{trip.place[0].name.split(',')[0]}</h3> : null
-                    } */}
+                  
 
                     {trip.place.length != 0 ?
-                        <h3 className="font-medium">
-                            Starting from {trip.place[0].name.split(',')[0]}</h3> : <h3>no destinations yet</h3>
+                        <h3 className="font-bold text-[#4C5454]">
+                            Starting from {trip.place[0].name.split(',')[0]}</h3 > : <h3 className="font-bold text-[#4C5454]">no destinations yet</h3>
                     }
 
                    </Link>
-                    {/* {date = new Date(trip.date)
-                   `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`} */}
-
-                    {/* tempo  {trip.place.length != 0 ?
-                        loopName(trip.place) : null
-                    } */}
-
+                 
 
 
 
 
 
                     <p>&nbsp;</p>
-                    <button onClick={deleteTrip} value={trip._id} className="font-bold text-sm"> Delete </button>
+                    <button onClick={deleteTrip} value={trip._id} className="font-bold text-sm text-black w-500 h-50 border-[1.5px] "> Delete </button>
 
                 </div>
             ))}

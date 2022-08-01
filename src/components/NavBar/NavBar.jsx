@@ -42,7 +42,7 @@ export default function NavBar({ user,setUser }) {
           <div className="text-[#AAEFDF] font-bold ">&nbsp; | &nbsp;</div>
           <Link to="/trips/new" className="text-[#CFFCFF] font-bold ">New Trip</Link>
           <div className="text-[#AAEFDF] font-bold ">&nbsp; | &nbsp;</div>
-          <Link to="/trips/places" className="text-[#CFFCFF] font-bold ">Set Places</Link>
+          <Link to="/" className="text-[#CFFCFF] font-bold ">Home</Link>
         </div>
 
 
