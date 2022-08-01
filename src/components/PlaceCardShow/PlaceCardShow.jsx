@@ -57,7 +57,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
         setTheTrip(trip[0])
         console.log("updating theTrip", theTrip)
 
-    }, [theTrip, allTrips, allPlaces, id, theTrip, updateMap])
+    }, [updated,theTrip, allTrips, allPlaces, id, updateMap])
 
 
 
@@ -70,7 +70,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
         // setTheTrip(trip[0])
         console.log("updating thePlaces", thePlaces)
 
-    }, [thePlaces, allTrips, allPlaces, id, theTrip, updateMap])
+    }, [updated,thePlaces, allTrips, allPlaces, id,updateMap])
 
 
 

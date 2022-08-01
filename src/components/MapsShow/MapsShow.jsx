@@ -80,12 +80,14 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     // setFormData({ ...formData, name: results.request.origin.query })
     console.log(theData)
 
-    
+    setUpdated(!updated)
+    setUpdateMap(!updateMap)
     // setAllPlaces(formData)
  
     placeAPI.newPlace(theData)
     setUpdated(!updated)
     setUpdateMap(!updateMap)
+    
     console.log("updated?really?")
 
     originRef.current.value = ''
