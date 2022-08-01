@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
 
-export default function NavBar({setUser}) {
+export default function NavBar({ user,setUser }) {
 
 
   function handleLogOut() {
@@ -14,20 +14,42 @@ export default function NavBar({setUser}) {
 
   return (
     <nav>
-      <Link to="/trips">My Trips</Link>
-      &nbsp; | &nbsp;
-      <Link to="/trips/new">New Trip</Link>
-      &nbsp; | &nbsp;
-      <Link to="/trips/places">Set Places</Link>
-      <Link
-                  to=""
-                  onClick={handleLogOut}
-                  className="pl-3 text-[#1E2D24] flex justify-start order-last p-2 border-[#1f1f1f] focus:text-black focus:bg-[#f7f7f2] border-r-8 hover:border-r-8 hover:border-[#C8B497] active: transition-colors duration-300 text-lg font-light"
-                  aria-selected="false"
-                >
-                  <i className="fa-solid fa-arrow-right-from-bracket mt-1.5 text-[#598392]"></i>
-                  &nbsp;&nbsp;&nbsp;Log Out
-                </Link>
+      <div className="grid grid-cols-3 items-center">
+
+      
+          <Link
+            to=""
+            onClick={handleLogOut}
+            className="flex flex-row ml-10 text-[#CFFCFF] font-bold"
+            aria-selected="false"
+          >
+            <i className="fa-solid fa-arrow-right-from-bracket mt-1.5 text-[#AAEFDF]"></i>
+            &nbsp;&nbsp;&nbsp;Log Out
+          </Link>
+        
+
+<div>
+
+<h1 className="text-[#CFFCFF] text-4xl font-bold" id="title">Trip Note</h1>
+
+</div>
+
+
+
+
+        <div className="flex flex-row-reverse mr-20">
+          <Link to="/trips" className="text-[#CFFCFF] font-bold ">My Trips</Link>
+          <div className="text-[#AAEFDF] font-bold ">&nbsp; | &nbsp;</div>
+          <Link to="/trips/new" className="text-[#CFFCFF] font-bold ">New Trip</Link>
+          <div className="text-[#AAEFDF] font-bold ">&nbsp; | &nbsp;</div>
+          <Link to="/trips/places" className="text-[#CFFCFF] font-bold ">Set Places</Link>
+        </div>
+
+
+
+
+        
+      </div>
     </nav>
   );
 }

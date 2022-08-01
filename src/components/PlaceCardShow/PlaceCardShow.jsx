@@ -62,7 +62,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             setThePlaces(trip[0].place)
             // setTheTrip(trip[0])
             console.log("updating thePlaces", thePlaces)
-        }, 1000)
+        }, 900)
     }, [thePlaces, allTrips, id, theTrip, signal])
 
     useEffect(() => {
@@ -72,7 +72,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
             setTheTrip(trip[0])
             console.log("updating theTrip", theTrip)
-        }, 1000)
+        }, 900)
     }, [theTrip, allTrips, id, theTrip, signal])
 
 
@@ -122,9 +122,9 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                             <h3 className="font-bold">Note: </h3>
                             {p.note ? <p >{p.note}</p> : <p className="font-light text-sm"  >No note yet</p>}
 
-                            <Link to={`/trips/editPlace/${p._id}`} id="linkButton" className="font-bold text-sm "> Edit Page </Link>
+                            <Link to={`/trips/editPlace/${p._id}`} id="linkButton" className="font-bold text-sm "> Edit </Link>
                             <p>&nbsp;</p>
-                            <button onClick={deletePlace} value={p._id} className="font-bold text-sm"> Delete Place </button>
+                            <button onClick={deletePlace} value={p._id} className="font-bold text-sm"> Delete</button>
 
                         </div>
 

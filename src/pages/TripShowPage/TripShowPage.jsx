@@ -15,18 +15,13 @@ export default function TripShowPage({updated,setUpdated, allTrips, allPlaces,se
 
         <div>
        
-        {/* <MapsShow allPlaces={allPlaces} setUpdated={setUpdated} updated={updated} distance={distance} setDistance={setDistance}duration={duration}setDuration={setDuration}
-        allTrips={allTrips}
-        setAllTrips={setAllTrips}
-        
-        /> */}
-
-        {/* <h3>New Places</h3> */}
-        <div className ="flex flex-row items-center " >
+       {/* className ="flex flex-row items-center " */}
+        <div  >
         <PlaceCardShow allPlaces={allPlaces} setUpdated={setUpdated} setAllPlaces={setAllPlaces} 
         allTrips={allTrips} setAllTrips={setAllTrips} updated={updated}
         />
         </div>
+
         </div>
 
         )

@@ -66,6 +66,7 @@ useEffect(
       <div>
        <NavBar
        user={user}
+       setUser={setUser}
       />
       <Routes>
         

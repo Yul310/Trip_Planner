@@ -1,17 +1,28 @@
 /* CSS Custom Properties */
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lobster+Two:ital,wght@1,700&family=Permanent+Marker&display=swap');
+
 :root {
   --white: #FFFFFF;
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
   --tan-4: #D3C1AE;
-  --orange: #598392;
+  --orange: #9EE37D;
   --text-light: #968c84;
   --text-dark: #615954;
 }
 
 *, *:before, *:after {
   box-sizing: border-box;
+}
+
+
+#title{
+
+  /* font-family: 'Alfa Slab One', cursive; */
+  font-family: 'Lobster Two', cursive;
+  /* font-family: 'Permanent Marker', cursive; */
 }
 
 body {
@@ -21,7 +32,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #EFF6E0;
+  background-color: #4C5454;
   padding: 2vmin;
   height: 100vh;
 }

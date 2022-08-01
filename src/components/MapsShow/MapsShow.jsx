@@ -16,14 +16,14 @@ const containerStyle = {
 const google = window.google
 
 
-export default function Map({allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces}) {
+export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces }) {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [newPlace, setNewPlace] = useState([])
   const [formData, setFormData] = useState({
     name: "",
-    tripId: theTrip._id,
+    tripId: "",
     staying: "",
     note: "",
   });
@@ -56,52 +56,47 @@ export default function Map({allPlaces, updated, setUpdated, distance, setDistan
   /////  Google API Functions    ///////
   //////////////////////////////////////
 
+  function handleChange() {
+    console.log(originRef.current.value)
+    console.log(theTrip._id)
+
+    setFormData({ name: "", tripId: theTrip._id, staying: "", note: "" });
+    // setFormData({  note: Autocomplete.getPlace() });
+    console.log(formData);
+
+  }
+
 
   async function findPlace() {
     // console.log(originRef.current.value)
-
+    //  handleChange()
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
       destination: originRef.current.value,
       travelMode: window.google.maps.TravelMode.DRIVING,
     })
-    setFormData({ ...formData, name: results.request.origin.query })
-    // console.log(formData)
+    console.log(results.request.origin.query)
+    const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
+    // setFormData({ ...formData, name: results.request.origin.query })
+    console.log(theData)
+
+   
+    // setAllPlaces(formData)
+    placeAPI.newPlace(theData)
 
     setUpdated(!updated)
-    // setAllPlaces(formData)
-    placeAPI.newPlace(formData)
-   
-    // const newP = placeAPI.getAll();
+    originRef.current.value = ''
 
-  
-
-    setFormData({
-      name: "",
-      tripId: "",
-      staying: "",
-      note: "",
-    })
+    // setFormData({
+    //   name: "",
+    //   tripId: "",
+    //   staying: "",
+    //   note: "",
+    // })
 
 
   }
-
-
-
-  // const thePlace = allPlaces.filter((place) => place._id !== evt.target.value);
-  // console.log(thePlace);
-  // setThePlaces(thePlace);
-
-  // const places = allPlaces.filter((place) => place._id !== evt.target.value);
-  // setAllPlaces(places);
-
-  // const trip = allTrips.filter((trip) => trip._id === id);
-  // const otherTrips = allTrips.filter((trip) => trip._id !== id);
-  // console.log(trip[0].place)
-  // const newT = trip[0].place.filter((p) => p._id !== evt.target.value)
-  // trip[0].place = newT;
-
 
 
 
@@ -146,7 +141,7 @@ export default function Map({allPlaces, updated, setUpdated, distance, setDistan
     setDistance('')
     setDuration('')
     originRef.current.value = ''
-    destiantionRef.current.value = ''
+    
   }
 
 
@@ -160,27 +155,29 @@ export default function Map({allPlaces, updated, setUpdated, distance, setDistan
     findPlace()
   }
 
-  function handleChange(evt) {
-    console.log(originRef.current.value)
+  // function handleChange(evt) {
+  //   console.log(originRef.current.value)
 
-    setFormData({ ...formData, [evt.target.name]: evt.target.value, name: originRef.current.value });
-    // setFormData({  note: Autocomplete.getPlace() });
-    console.log(formData);
+  //   setFormData({ ...formData, [evt.target.name]: evt.target.value, name: originRef.current.value });
+  //   // setFormData({  note: Autocomplete.getPlace() });
+  //   console.log(formData);
 
-  }
+  // }
+
+
 
 
   return (
 
     <>
-
-      <div className=" flex flex-row items-center justify-evenly">
-        <Autocomplete className="m-0 p-0" >
+      {/* items-center justify-evenly */}
+      <div className=" grid grid-cols-6 ">
+        <Autocomplete className=" col-start-3 col-end-5" >
           <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8" name="name" />
         </Autocomplete>
 
 
-        <label className="font-light text-left text-lg h-1/2 px-2 py-2">
+        {/* <label className="font-light text-left text-lg h-1/2 px-2 py-2">
           Trip Name
         </label>
 
@@ -198,23 +195,23 @@ export default function Map({allPlaces, updated, setUpdated, distance, setDistan
           ))}
 
 
-        </select>
+        </select> */}
 
 
 
 
+        <div className=" col-start-5" >
 
+          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#598392] "  >Add To Trip</button>
 
-        <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#598392] m-0 p-0" >Add To Trip</button>
-
-
+        </div>
         {/* <Autocomplete className="m-0 p-0">
           <input type="text" placeholder='Destination' ref={destiantionRef} className="w-60 h-8" onChange={handleChange} name="destination" value={formData.destination} />
         </Autocomplete> */}
 
-
-        <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-[#598392] m-0 p-0" >ShowRoute</button>
-
+        <div className=" col-start-6" >
+          <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-[#598392] col-start-6" >ShowRoute</button>
+        </div>
       </div>
 
 
