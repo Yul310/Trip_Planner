@@ -16,7 +16,7 @@ const containerStyle = {
 const google = window.google
 
 
-export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces }) {
+export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces, setAllTrips, setAllPlaces }) {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
@@ -68,8 +68,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
 
   async function findPlace() {
-    // console.log(originRef.current.value)
-    //  handleChange()
+
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -81,19 +80,14 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     // setFormData({ ...formData, name: results.request.origin.query })
     console.log(theData)
 
-   
-    // setAllPlaces(formData)
-    placeAPI.newPlace(theData)
-
     setUpdated(!updated)
-    originRef.current.value = ''
+    // setAllPlaces(formData)
+ 
+    placeAPI.newPlace(theData)
+    setUpdated(!updated)
+    console.log("updated?really?")
 
-    // setFormData({
-    //   name: "",
-    //   tripId: "",
-    //   staying: "",
-    //   note: "",
-    // })
+    originRef.current.value = ''
 
 
   }
@@ -141,7 +135,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     setDistance('')
     setDuration('')
     originRef.current.value = ''
-    
+
   }
 
 
