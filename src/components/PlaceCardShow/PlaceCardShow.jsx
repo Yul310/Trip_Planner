@@ -9,7 +9,7 @@ import MapsShow from '../../components/MapsShow/MapsShow';
 
 
 
-export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips, setSignal, signal }) {
+export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, updated, allTrips, setAllTrips,  }) {
     const [distance, setDistance] = useState([])
     const [duration, setDuration] = useState([])
     const [theTrip, setTheTrip] = useState({});
@@ -62,8 +62,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             setThePlaces(trip[0].place)
             // setTheTrip(trip[0])
             console.log("updating thePlaces", thePlaces)
-        }, 1000)
-    }, [thePlaces, allTrips, id, theTrip, signal])
+        }, 2000)
+    }, [thePlaces, allTrips, id, theTrip])
 
     useEffect(() => {
 
@@ -72,8 +72,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
             setTheTrip(trip[0])
             console.log("updating theTrip", theTrip)
-        }, 1000)
-    }, [theTrip, allTrips, id, theTrip, signal])
+        }, 2000)
+    }, [theTrip, allTrips, id, theTrip])
 
 
 
@@ -96,8 +96,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                 setDistance={setDistance}
                 duration={duration}
                 setDuration={setDuration}
-                signal={signal}
-                setSignal={setSignal}
+             
+             
                 allTrips={allTrips}
                 setAllTrips={setAllTrips}
                 theTrip={theTrip}
