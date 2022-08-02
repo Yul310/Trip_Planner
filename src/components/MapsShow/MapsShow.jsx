@@ -31,6 +31,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     lat: 48.8584,
     lng: 2.2945
   })
+  const [tripMode, setTripMode] = useState("")
 
   // const onLoad = useCallback((map) =>(mapRef.current = map), []);
   /** @type React.MutableRefObject<HTMLInputElement> */
@@ -112,7 +113,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
         destination: thePlaces[i + 1].name,
 
-        travelMode: window.google.maps.TravelMode.DRIVING,
+        travelMode: window.google.maps.TravelMode[tripMode]
 
       })
 
@@ -126,7 +127,11 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
   }
 
 
-
+ function tripModeChange(e) {
+    setTripMode(e.target.value)
+    console.log(e.target.value)
+    console.log(tripMode)
+  }
 
   function clearRoute() {
     setDirectionsResponse(null)
@@ -164,27 +169,37 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     <>
       {/* items-center justify-evenly */}
       <div className=" grid grid-cols-6 m-3">
+
+
+
+      <select
+          name="tripId"
+          value={tripMode}
+          onChange={tripModeChange}
+          className="w-60 h-8 border-[2px] border-black rounded-md col-start-2 col-end-3"
+          
+        >
+          <option >Select a trip mode</option>
+          
+            <option value = "WALKING" >
+              WALKING
+            </option>
+            <option value="DRIVING" >
+              DRIVING
+            </option>
+          
+        </select>
+
+
+
+
         <Autocomplete className=" col-start-3 col-end-5" >
-          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8 border-[2px]" name="name" />
+          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8 border-[2px] rounded-md" name="name" />
         </Autocomplete>
 
 
-        {/* <label className="font-light text-left text-lg h-1/2 px-2 py-2">
-          Trip Name
-        </label>
-        <select
-          name="tripId"
-          value={formData.tripId}
-          onChange={handleChange}
-          className="font-extralight text-2l text-left h-1/2 px-2 py-2 bg-[#f7f7f2]"
-        >
-          <option >Select a trip</option>
-          {allTrips.map((trip) => (
-            <option value={trip._id} key={trip._id}>
-              {trip.title}
-            </option>
-          ))}
-        </select> */}
+      
+     
 
 
 
