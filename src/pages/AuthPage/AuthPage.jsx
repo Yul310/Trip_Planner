@@ -18,7 +18,7 @@ export default function AuthPage({ setUser }) {
     <>
       <main className="flex flex-col h-screen">
         <div
-          className="bg-[#AAEFDF] px-24 flex mt-60 mb-[-235px] z-0 "
+          className="bg-[#CFFCFF] px-24 flex mt-60 mb-[-235px] z-0 "
           id="diagonal"
         >
           <p>&nbsp;</p>

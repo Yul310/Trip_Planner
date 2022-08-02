@@ -30,7 +30,7 @@ export default function NavBar({ user,setUser }) {
 
 <div>
 
-<h1 className="text-[#CFFCFF] text-4xl font-bold" id="title">Trip Note</h1>
+<h1 className="text-[#CFFCFF] text-4xl font-bold" id="title">Tripplan</h1>
 
 </div>
 

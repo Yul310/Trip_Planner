@@ -7,7 +7,7 @@ export default function Logo() {
         className="text-white flex text-center justify-center font-bold tracking-tighter"
         id="clearsight"
       >
-        TripNote
+        Trippplan
       </div>
     </div>
   );

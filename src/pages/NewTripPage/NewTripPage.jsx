@@ -92,7 +92,7 @@ export default function NewTripPage({ updated, setUpdated }) {
         <button
           type="submit"
           onClick={handleSubmit}
-          className="bg-[#1f1f1f] text-white font-bold py-2 px-4 rounded-lg hover:ring hover:ring-orange-400"
+          className="bg-[#CFFCFF] border-[3px] text-l text-black font-black py-2 px-4 rounded-lg hover:ring hover:ring-orange-400"
         >
           Create
         </button>
