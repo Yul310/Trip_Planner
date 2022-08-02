@@ -29,7 +29,7 @@ Happy planning!
 
 Concept idea for the homepage.
 
-![ProposedTripPage](./img/Create New TripList.png)
+![ProposedTripPage](img/Create Trip Destinations.png)
 
 Concept ideas for the Trip index page.
 
@@ -41,7 +41,7 @@ Concept ideas for the destination page.
 
 ## The ERD: 
 
-![ERD](./img/IMG_0528.heic)
+![ERD](img/unnamed.jpg)
 
 The proposed ERD for the project *(entity relationship diagram)*
 
