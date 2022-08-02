@@ -41,13 +41,13 @@ Concept ideas for the destination page.
 
 ## The ERD: 
 
-![ERD](./img/routes.png)
+![ERD](./img/turnaround.jpg)
 
 The proposed ERD for the project *(entity relationship diagram)*
 
 
 ## Route Table:
-![RouteTable](./img/turnaround.jpg)
+![RouteTable](./img/routes.png)
  
 List of the routes used.
 

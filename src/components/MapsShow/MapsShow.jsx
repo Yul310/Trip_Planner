@@ -28,8 +28,8 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     note: "",
   });
   const [currentLocation, setCurrentLocation] = useState({
-    lat: 48.8584,
-    lng: 2.2945
+    lat: 33.8885,
+    lng: -117.8133
   })
   const [tripMode, setTripMode] = useState("")
 
@@ -92,7 +92,9 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     console.log("updated?really?")
 
     originRef.current.value = ''
-
+setTimeout(() => {
+  setUpdateMap(!updateMap)
+}, 4000)
 
   }
 
