@@ -25,33 +25,23 @@ Happy planning!
 
 ## Wireframes:
  
-![Proposed Homepage](./img/proposed-homepage.png)
+![Proposed Homepage](./img/HomePage.png)
 
 Concept idea for the homepage.
 
-![Proposed Trip Index Page](./img/proposed-notes-pages.png)
+![Proposed Trip Index Page](./img/Create New TripList.png)
 
-Concept ideas for the index page.
+Concept ideas for the Trip index page.
 
-![Proposed Destination Page](./img/proposed-todo-list-pages.png)
+![Proposed Destination Page](./img/Create Trip Destinations.png)
 
-Concept ideas for the create and edit page.
+Concept ideas for the destination page.
 
-![Finished Homepage](./img/final-homepage.png)
 
-Finished homepage.
-
-![Finished Notes Pages](./img/final-notes.png)
-
-Finished notes page.
-
-![Finished Todos Pages](./img/final-todos.png)
-
-Finished todos page.
 
 ## The ERD: 
 
-![ERD](./img/ERD.png)
+![ERD](./img/Screen Shot 2022-08-01 at 7.49.37 PM.png)
 
 The proposed ERD for the project *(entity relationship diagram)*
 
@@ -69,17 +59,6 @@ List of the routes used.
 - Express
 - React
 - MERN
-
-## MVP Requirements:
-- Be a full-stack MERN application.
-- Connect to and perform data operations on a Mongo database.
-- If consuming an API, have at least one data entity (Model) in addition to the built-in User model. The related entity can be either a one-to-many (1:M) or a many-to-many (M:M) relationship.
-- If not consuming an API, have at least two data entities (Models) in addition to the built-in User model. It is preferable to have at least one one-to-many (1:M) and one many-to-many (M:M) relationship between entities/models.
-- Have full-CRUD *(Create, Read, Update, and Delete)* data operations across any combination of the app's models (excluding the User model). 
-- Authenticate users using token-based authentication.
-- Implement authorization by restricting access to the Creation, Updating & Deletion of data resources.
-- Be deployed online using Heroku. Presentations must use the deployed application.
-
 
 
 ## Future goals:
