@@ -31,6 +31,7 @@
 
   /* font-family: 'Alfa Slab One', cursive; */
   font-family: 'Lobster Two', cursive;
+  text-shadow: 3px 3px #000000;
   /* font-family: 'Permanent Marker', cursive; */
 }
 
@@ -108,12 +109,12 @@ code {
   font-size: 2vmin;
 }
 
-.form-container {
+/* .form-container {
   padding: 3vmin;
   background-color: var(--tan-1);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
-}
+} */
 
 p.error-message {
   color: var(--orange);

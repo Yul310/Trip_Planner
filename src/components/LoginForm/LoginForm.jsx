@@ -41,8 +41,8 @@ export default function LoginForm({ setUser }) {
             onChange={handleChange}
             required
             placeholder="Email"
-            className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg- focus:border-black focus:ring-0
-            bg-[#FFFDE0]"
+            className="my-1.5 border-4 rounded-xl py-2 px-4 border-black  focus:border-black focus:ring-0
+            bg-white"
           />
           <br />
           {/* <label>Password</label> */}
@@ -54,7 +54,7 @@ export default function LoginForm({ setUser }) {
             required
             placeholder="Password"
             className="my-1.5 border-4 rounded-xl py-2 px-4 border-black bg-white focus:border-black focus:ring-0
-            bg-[#FFFDE0]"
+            "
           />
           <br />
           <button

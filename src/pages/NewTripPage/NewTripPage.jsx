@@ -48,63 +48,57 @@ export default function NewTripPage({ updated, setUpdated }) {
 
   return (
 
-    <div >
-      <h1>New Trip</h1>
-      <form action="" onChange={handleChange}>
-        <label className="font-bold text-left text-lg h-1/2 px-2 py-2">
-          Title
-        </label>
+    <div className="mt-40 ">
+      <h1 className="font-bold text-xl mb-5 ">New Trip</h1>
+  
+      <form onChange={handleChange} >
+        
         <input
           type="text"
           name="title"
           value={formData.title}
           placeholder="Add title here..."
-          className="w-200 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
+          className="w-100 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
         />
         <p>&nbsp;</p>
 
-        <label className="font-bold text-left text-lg h-1/2 px-2 py-2">
-          Date
-        </label>
+        
         <input
           type="date"
           name="date"
           value={formData.date}
-          className="w-200 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
+          className="w-100 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
         />
         <p>&nbsp;</p>
 
-        <label className="font-bold text-left text-lg h-1/2 px-2 py-2">
-          Time
-        </label>
+        
         <input
           type="time"
           name="time"
           value={formData.time}
-          className="w-200 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
+          className="w-100 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
         />
         <p>&nbsp;</p>
 
-        <label className="font-bold text-left text-lg h-1/2 px-2 py-2">
-          Note
-        </label>
+       
         <input
           type="text"
           name="note"
           value={formData.note}
           placeholder="Add your note here..."
-          className="w-200 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
+          className="w-100 h-8 bg-[#f7f7f2] border-b-[1px] border-black "
         />
         <p>&nbsp;</p>
         <button
           type="submit"
           onClick={handleSubmit}
-          className="bg-[#1f1f1f] text-white font-light py-2 px-4 rounded-lg hover:ring hover:ring-orange-400"
+          className="bg-[#1f1f1f] text-white font-bold py-2 px-4 rounded-lg hover:ring hover:ring-orange-400"
         >
           Create
         </button>
 
       </form>
+     
     </div>
 
   )

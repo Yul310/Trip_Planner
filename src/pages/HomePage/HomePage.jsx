@@ -34,18 +34,31 @@ export default function TripIndexPage({ allTrips, setAllTrips, setUpdated, updat
         setUpdated(!updated)
     }
 
+    const userName = user.name.charAt(0).toUpperCase() + user.name.slice(1);
 
     return (
         <div className="mt-40  ">
 
-         
-            <div className="flex flex-row mt-14 ml-7 ">
+            <div className="w-600">
+                <h1 className="mb-5 font-bold text-5xl text-[#CFFCFF] ">Hello,{userName}</h1>
+                <Link to="/trips/new">
+                <button className=" p-3 bg-black border-[#CFFCFF] border-[3px] rounded-md text-xl text-white" >
+                    Clcik to Start Your Trip
+                </button>
+                </Link>
+            </div>
+            
+            {/* <div id="dash">
+            </div> */}
+           
 
-                <h3 className="font-bold text-xl text-[#CFFCFF] ">Your Trips</h3>
+            <div className="flex flex-row mt-14 ml-14 ">
+
+                <h3 className=" font-bold text-xl text-[#CFFCFF] mt-40">Your Saved Trips...</h3>
 
             </div>
             {allTrips.length ?
-                <div className="flex flex-row mt-4">
+                <div className="flex flex-row mt-4 ml-7">
 
                     {allTrips.map((trip, idx) => (
 

@@ -18,7 +18,7 @@ export default function AuthPage({ setUser }) {
     <>
       <main className="flex flex-col h-screen">
         <div
-          className="bg-[#AAEFDF] px-24 flex mt-44 mb-[-235px] z-0 "
+          className="bg-[#AAEFDF] px-24 flex mt-60 mb-[-235px] z-0 "
           id="diagonal"
         >
           <p>&nbsp;</p>
@@ -31,7 +31,7 @@ export default function AuthPage({ setUser }) {
             </div>
           </div>
         </div>
-        <div className="px-60 py-24 relative">
+        <div className="mt-20 relative">
           {showLogin ? (
             <LoginForm setUser={setUser} />
           ) : (
@@ -39,7 +39,7 @@ export default function AuthPage({ setUser }) {
           )}
           <button
             onClick={() => setShowLogin(!showLogin)}
-            className="bg-[#1f1f1f] text-white font-medium py-2 px-4 rounded hover:ring hover:ring-orange-400"
+            className="mt-0 bg-[#1f1f1f] text-white font-medium py-2 px-4 rounded hover:ring hover:ring-orange-400"
           >
             {showLogin ? "SIGN UP" : "LOG IN"}
           </button>

@@ -10,6 +10,7 @@ import NewTripPage from "../NewTripPage/NewTripPage";
 import TripIndexPage from "../TripIndexPage/TripIndexPage";
 import PlaceEditPage from "../PlaceEditPage/PlaceEditPage";
 import TripShowPage from "../TripShowPage/TripShowPage";
+import HomePage from "../HomePage/HomePage";
 
 import * as tripAPI from "../../utilities/trips-api";
 
@@ -72,7 +73,7 @@ export default function App() {
 
 
 
-            <Route path="/" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user}/>} />
+            <Route path="/" element={<HomePage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user}/>} />
 
 
             <Route path="/trips/new" element={<NewTripPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} />} />
