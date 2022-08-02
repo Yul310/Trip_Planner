@@ -29,11 +29,11 @@ Happy planning!
 
 Concept idea for the homepage.
 
-![Proposed Trip Index Page](./img/Create New TripList.png)
+![ProposedTripPage](./img/Create New TripList.png)
 
 Concept ideas for the Trip index page.
 
-![Proposed Destination Page](./img/Create Trip Destinations.png)
+![Proposed Destination Page](/Users/SHuh/Documents/General_Assembly/GA_Project/trip_planner/img/HomePage.png)
 
 Concept ideas for the destination page.
 
@@ -41,13 +41,13 @@ Concept ideas for the destination page.
 
 ## The ERD: 
 
-![ERD](./img/Screen Shot 2022-08-01 at 7.49.37 PM.png)
+![ERD](./img/IMG_0528.heic)
 
 The proposed ERD for the project *(entity relationship diagram)*
 
 
 ## Route Table:
- ![Route Table](./img/routes.png)
+ ![RouteTable](./img/Screen Shot 2022-08-01 at 7.49.37 PM.png)
  
 List of the routes used.
 
