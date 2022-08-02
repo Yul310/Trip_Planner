@@ -97,10 +97,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                 setUpdateMap={setUpdateMap}
 
             />
-            <div className="flex flex-row" >
-                <h3 id="subtitle" className="font-bold text-xl text-[#CFFCFF] mt-2 ml-5">{theTrip.title}  </h3>
-                <h3 className="font-bold text-xl text-[#CFFCFF] mt-2 ml-5">{`${theTrip.date}`.split('T')[0]}</h3>
-            </div>
+           
             <div className="flex flex-row items-center" >
 
 

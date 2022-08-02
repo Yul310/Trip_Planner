@@ -87,7 +87,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
  
     placeAPI.newPlace(theData)
     setUpdated(!updated)
-    setUpdateMap(!updateMap)
+    
     
     console.log("updated?really?")
 
@@ -168,9 +168,12 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
     <>
       {/* items-center justify-evenly */}
-      <div className=" grid grid-cols-6 m-3">
+      <div className=" grid grid-cols-6 m-3 col-start-1 col-end-2">
 
-
+      <div className="flex flex-row" >
+                <h3 id="subtitle" className="font-bold text-xl text-black mt-2 ml-5 drop-shadow-[0_1px_1px_white]"  >{theTrip.title}  </h3>
+                <h3 className="font-bold text-xl text-[black mt-2 ml-5 drop-shadow-[0_1px_1px_white]">{`${theTrip.date}`.split('T')[0]}</h3>
+            </div>
 
       <select
           name="tripId"
