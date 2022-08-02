@@ -29,11 +29,11 @@ Happy planning!
 
 Concept idea for the homepage.
 
-![ProposedTripPage](./img/Create Trip Destinations.png)
+![ProposedTripPage](./img/TripList.png)
 
 Concept ideas for the Trip index page.
 
-![Proposed Destination Page](./Users/SHuh/Documents/General_Assembly/GA_Project/trip_planner/img/HomePage.png)
+![Proposed Destination Page](./img/Destinations.png)
 
 Concept ideas for the destination page.
 
@@ -47,7 +47,7 @@ The proposed ERD for the project *(entity relationship diagram)*
 
 
 ## Route Table:
-![RouteTable](./img/Screen Shot 2022-08-01 at 7.49.37 PM.png)
+![RouteTable](./img/turnaround.jpg)
  
 List of the routes used.
 
@@ -62,6 +62,6 @@ List of the routes used.
 
 
 ## Future goals:
-- [x] Connect an api to add todos onto a calendar
-- [ ] Dark mode
+- [ ] Showing famous places on the map by using API
+- [ ] Email and print PDF functions
 
