@@ -1,5 +1,5 @@
 
-![ClearSight](./img/clearsight.png)
+
 
 
 ## Premise: 
@@ -29,7 +29,7 @@ Happy planning!
 
 Concept idea for the homepage.
 
-![ProposedTripPage](img/Create Trip Destinations.png)
+![ProposedTripPage](./img/Create Trip Destinations.png)
 
 Concept ideas for the Trip index page.
 
