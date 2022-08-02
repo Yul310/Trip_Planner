@@ -62,6 +62,7 @@ List of the routes used.
 
 
 ## Future goals:
+- [ ] Showing all the routes and destinations on the map
 - [ ] Showing famous places on the map by using API
 - [ ] Email and print PDF functions
 
