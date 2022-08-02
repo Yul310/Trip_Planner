@@ -50,27 +50,27 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
 
     useEffect(() => {
+        setTimeout(() => {
 
-
-        const trip = allTrips.filter((trip) => trip._id === id);
-        console.log(trip[0])
-        setTheTrip(trip[0])
-        console.log("updating theTrip", theTrip)
-
-    }, [updated,theTrip, allTrips, allPlaces, id, updateMap])
+            const trip = allTrips.filter((trip) => trip._id === id);
+            console.log(trip[0])
+            setTheTrip(trip[0])
+            console.log("updating theTrip", theTrip)
+        }, 2000)
+    }, [updated, theTrip, allTrips, allPlaces, id, updateMap])
 
 
 
     useEffect(() => {
+        setTimeout(() => {
 
-
-        const trip = allTrips.filter((trip) => trip._id === id);
-        console.log(trip[0].place)
-        setThePlaces(trip[0].place)
-        // setTheTrip(trip[0])
-        console.log("updating thePlaces", thePlaces)
-
-    }, [updated,thePlaces, allTrips, allPlaces, id,updateMap])
+            const trip = allTrips.filter((trip) => trip._id === id);
+            console.log(trip[0].place)
+            setThePlaces(trip[0].place)
+            // setTheTrip(trip[0])
+            console.log("updating thePlaces", thePlaces)
+        }, 2000)
+    }, [updated, thePlaces, allTrips, allPlaces, id, updateMap])
 
 
 

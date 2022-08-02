@@ -69,7 +69,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
 
   async function findPlace() {
-
+    setUpdated(!updated)
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -81,8 +81,8 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     // setFormData({ ...formData, name: results.request.origin.query })
     console.log(theData)
 
-    setUpdated(!updated)
-    setUpdateMap(!updateMap)
+    // setUpdated(!updated)
+    // setUpdateMap(!updateMap)
     // setAllPlaces(formData)
  
     placeAPI.newPlace(theData)

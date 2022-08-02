@@ -2,10 +2,9 @@
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from "../../components/NavBar/NavBar";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import NewPlacePage from "../NewPlacePage/NewPlacePage";
 import NewTripPage from "../NewTripPage/NewTripPage";
 import TripIndexPage from "../TripIndexPage/TripIndexPage";
 import PlaceEditPage from "../PlaceEditPage/PlaceEditPage";
@@ -80,13 +79,15 @@ export default function App() {
 
             <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user}/>} />
 
+            <Route path="/trips/showTrip/:id" element={<TripShowPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
+              allTrips={allTrips}
+              setAllTrips={setAllTrips} />} />
+
             <Route path="/trips/editPlace/:id" element={<PlaceEditPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
               allTrips={allTrips}
               setAllTrips={setAllTrips} />} />
 
-            <Route path="/trips/showTrip/:id" element={<TripShowPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
-              allTrips={allTrips}
-              setAllTrips={setAllTrips} />} />
+         
 
           </Routes>
         </div>
