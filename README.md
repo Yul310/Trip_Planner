@@ -41,7 +41,7 @@ Concept ideas for the destination page.
 
 ## The ERD: 
 
-![ERD](.img/turnaround.jpg)
+![ERD](./img/turnaround.jpg)
 
 The proposed ERD for the project *(entity relationship diagram)*
 
