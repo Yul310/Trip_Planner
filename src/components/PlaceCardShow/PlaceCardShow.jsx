@@ -147,3 +147,4 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
         </div>
     );
 }
+//
