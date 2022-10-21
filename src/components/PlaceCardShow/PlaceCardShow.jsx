@@ -44,6 +44,10 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     }
 
 
+    // //////////////////////////////////////////////////////////////////////////////////
+    // I tested useEffect and setTimeout to see if those would help to update the props
+    /////////////////////////////////////////////////////////////////////////////////////
+    
     useEffect(() => {
         setTimeout(() => {
             const trip = allTrips.filter((trip) => trip._id === id);
@@ -53,21 +57,11 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     }, [updated, theTrip, allTrips, allPlaces,id,updateMap])
 
 
-    // useEffect(() => {
-    //         const trip = allTrips.filter((trip) => trip._id === id);
-    //         setTheTrip(trip[0])
-    // }, [updated, theTrip, allTrips, allPlaces,id,updateMap])
-
-
-
     useEffect(() => {
         setTimeout(() => {
-
             const trip = allTrips.filter((trip) => trip._id === id);
             console.log(trip[0].place)
             setThePlaces(trip[0].place)
-            // setTheTrip(trip[0])
-            // console.log("updating thePlaces", thePlaces)
         }, 1000)
     }, [updated, thePlaces, allTrips, allPlaces,id,updateMap])
 

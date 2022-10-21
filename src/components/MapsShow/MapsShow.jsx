@@ -68,21 +68,16 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     })
     // console.log(results.request.origin.query)
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
-    // setFormData({ ...formData, name: results.request.origin.query })
     // console.log(theData)
     placeAPI.newPlace(theData)
     setUpdated(!updated)
-   
     originRef.current.value = ''
     setTimeout(() => {
       bugFix()
     }, 1000)
-
   }
 
-
  function bugFix() {
-
   findPlace()
  }
    
