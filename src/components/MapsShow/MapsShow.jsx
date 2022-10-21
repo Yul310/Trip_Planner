@@ -59,7 +59,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
 
   async function findPlace() {
-    setUpdated(!updated)
+    // setUpdated(!updated)
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -76,7 +76,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     originRef.current.value = ''
     setTimeout(() => {
       bugFix()
-      // setUpdateMap(!updateMap)
+      setUpdateMap(!updateMap)
     }, 1000)
 
   }
