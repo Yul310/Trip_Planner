@@ -56,7 +56,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             console.log(trip[0])
             setTheTrip(trip[0])
             console.log("updating theTrip", theTrip)
-        }, 1000)
+        }, 500)
     }, [updated, theTrip, allTrips, allPlaces, id, updateMap])
 
 
