@@ -4,7 +4,7 @@ import { GoogleMap, useJsApiLoader, useLoadScript, MarkerF, Autocomplete, Direct
 import "./Map.css"
 import MapStyles from './MapStyles'
 import * as placeAPI from "../../utilities/places-api";
-
+import * as tripAPI from "../../utilities/trips-api";
 // import * as destinationAPI from "../../utilities/destinations-api";
 
 
@@ -16,7 +16,7 @@ const containerStyle = {
 const google = window.google
 
 
-export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces,updateMap, setUpdateMap }) {
+export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces,updateMap, setUpdateMap,setAllTrips }) {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
@@ -66,18 +66,32 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
       destination: originRef.current.value,
       travelMode: window.google.maps.TravelMode.DRIVING,
     })
-    console.log(results.request.origin.query)
+    // console.log(results.request.origin.query)
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // setFormData({ ...formData, name: results.request.origin.query })
     // console.log(theData)
     placeAPI.newPlace(theData)
     setUpdated(!updated)
+   
     originRef.current.value = ''
     setTimeout(() => {
-      setUpdateMap(!updateMap)
-    }, 4000)
+      bugFix()
+      // setUpdateMap(!updateMap)
+    }, 1000)
 
   }
+
+
+ function bugFix() {
+
+  findPlace()
+ }
+   
+      
+
+
+
+
 
   async function calculateAllRoute() {
     // console.log(thePlaces)

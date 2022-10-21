@@ -27,21 +27,25 @@ async function index(req, res) {
 async function create(req, res) {
   console.log("place create Controller 1")
   try {
+    // console.log(req.body)
     const newPlace = await Place.create(req.body);
+    // console.log(newPlace)
     const placeList = await Place.find({});
-    placeList.push(newPlace)
-    console.log(newPlace)
+    // console.log(placeList)
+    // placeList.push(newPlace)
+    
     const theOne = await Trip.findById(newPlace.tripId)
 
     theOne.place.push(newPlace._id)
 
     theOne.save()
-    console.log(theOne)
-    await placeList.save();
-
-
-
-    response.json(placeList);
+    
+    // console.log(theOne)
+    // await placeList.save();
+   
+    console.log(placeList)
+  
+    res.json(placeList);
   } catch (e) {
     res.status(400).json(e)
   }

@@ -33,7 +33,7 @@ async function create(req, res) {
     tripList.push(newTrip)
     console.log("Trip Create Controller 2")
     await tripList.save();
-    response.json(tripList);
+    res.json(tripList);
   } catch (e) {
     res.status(400).json(e)
   }

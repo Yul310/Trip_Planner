@@ -19,6 +19,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     const { id } = useParams();
 
 
+    
     async function deletePlace(evt) {
 
         const thePlace = allPlaces.filter((place) => place._id !== evt.target.value);
@@ -45,13 +46,17 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
     useEffect(() => {
         setTimeout(() => {
-            setUpdated(!updated)
             const trip = allTrips.filter((trip) => trip._id === id);
             console.log(trip[0])
             setTheTrip(trip[0])
-            // console.log("updating theTrip", theTrip)
-        }, 500)
-    }, [updated, theTrip, allTrips, allPlaces])
+        }, 1000)
+    }, [updated, theTrip, allTrips, allPlaces,id,updateMap])
+
+
+    // useEffect(() => {
+    //         const trip = allTrips.filter((trip) => trip._id === id);
+    //         setTheTrip(trip[0])
+    // }, [updated, theTrip, allTrips, allPlaces,id,updateMap])
 
 
 
@@ -64,7 +69,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             // setTheTrip(trip[0])
             // console.log("updating thePlaces", thePlaces)
         }, 1000)
-    }, [updated, thePlaces, allTrips, allPlaces])
+    }, [updated, thePlaces, allTrips, allPlaces,id,updateMap])
 
 
 
@@ -89,7 +94,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                 thePlaces={thePlaces}
                 updateMap={updateMap}
                 setUpdateMap={setUpdateMap}
-
+              
             />
            
             <div className="flex flex-row items-center" >
