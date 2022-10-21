@@ -70,23 +70,14 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // setFormData({ ...formData, name: results.request.origin.query })
     // console.log(theData)
- 
     placeAPI.newPlace(theData)
     setUpdated(!updated)
-    
-    
-    // console.log("updated?really?")
-
     originRef.current.value = ''
     setTimeout(() => {
       setUpdateMap(!updateMap)
     }, 4000)
 
   }
-
-
-
-
 
   async function calculateAllRoute() {
     // console.log(thePlaces)

@@ -16,13 +16,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     const [thePlaces, setThePlaces] = useState([]);
     const [updateMap, setUpdateMap] = useState(false);
 
-
-
     const { id } = useParams();
-
-    // const trip = allTrips.filter((trip) => trip._id === id);
-    // console.log(trip)
-
 
 
     async function deletePlace(evt) {
@@ -55,9 +49,9 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             const trip = allTrips.filter((trip) => trip._id === id);
             console.log(trip[0])
             setTheTrip(trip[0])
-            console.log("updating theTrip", theTrip)
+            // console.log("updating theTrip", theTrip)
         }, 500)
-    }, [updated, theTrip, allTrips, allPlaces, id, updateMap])
+    }, [updated, theTrip, allTrips, allPlaces])
 
 
 
@@ -68,9 +62,9 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             console.log(trip[0].place)
             setThePlaces(trip[0].place)
             // setTheTrip(trip[0])
-            console.log("updating thePlaces", thePlaces)
+            // console.log("updating thePlaces", thePlaces)
         }, 1000)
-    }, [updated, thePlaces, allTrips, allPlaces, id, updateMap])
+    }, [updated, thePlaces, allTrips, allPlaces])
 
 
 
