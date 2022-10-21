@@ -44,6 +44,8 @@ export default function NewTripPage({ updated, setUpdated }) {
   }
 
 
+  
+
 
 
   return (

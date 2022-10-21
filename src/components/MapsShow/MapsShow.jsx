@@ -211,7 +211,7 @@ setTimeout(() => {
 
         <div className=" col-start-5" >
 
-          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#AAEFDF] text-black border-[2px] "  >Add To Trip</button>
+          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#AAEFDF] text-black border-[2px] "  >Add To Trip,twice</button>
 
         </div>
         {/* <Autocomplete className="m-0 p-0">
