@@ -31,7 +31,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     lat: 33.8885,
     lng: -117.8133
   })
-  const [tripMode, setTripMode] = useState("")
+  const [tripMode, setTripMode] = useState("DRIVING")
 
   // const onLoad = useCallback((map) =>(mapRef.current = map), []);
   /** @type React.MutableRefObject<HTMLInputElement> */
@@ -57,16 +57,6 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
   /////  Google API Functions    ///////
   //////////////////////////////////////
 
-  // function handleChange() {
-  //   console.log(originRef.current.value)
-  //   console.log(theTrip._id)
-
-  //   setFormData({ name: "", tripId: theTrip._id, staying: "", note: "" });
-  //   // setFormData({  note: Autocomplete.getPlace() });
-  //   console.log(formData);
-
-  // }
-
 
   async function findPlace() {
     setUpdated(!updated)
@@ -79,22 +69,18 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     console.log(results.request.origin.query)
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // setFormData({ ...formData, name: results.request.origin.query })
-    console.log(theData)
-
-    // setUpdated(!updated)
-    // setUpdateMap(!updateMap)
-    // setAllPlaces(formData)
+    // console.log(theData)
  
     placeAPI.newPlace(theData)
     setUpdated(!updated)
     
     
-    console.log("updated?really?")
+    // console.log("updated?really?")
 
     originRef.current.value = ''
-setTimeout(() => {
-  setUpdateMap(!updateMap)
-}, 4000)
+    setTimeout(() => {
+      setUpdateMap(!updateMap)
+    }, 4000)
 
   }
 
@@ -103,7 +89,7 @@ setTimeout(() => {
 
 
   async function calculateAllRoute() {
-    console.log(thePlaces)
+    // console.log(thePlaces)
     setDistance('')
     setDuration('')
 
@@ -130,37 +116,31 @@ setTimeout(() => {
 
 
  function tripModeChange(e) {
+  
     setTripMode(e.target.value)
+  
     console.log(e.target.value)
     console.log(tripMode)
+    e.target.value = ""
   }
 
-  function clearRoute() {
-    setDirectionsResponse(null)
-    setDistance('')
-    setDuration('')
-    originRef.current.value = ''
+  // function clearRoute() {
+  //   setDirectionsResponse(null)
+  //   setDistance('')
+  //   setDuration('')
+  //   originRef.current.value = ''
 
-  }
+  // }
 
 
   //////////////////////////////////////
   /////  Handle the click evens ///////
   //////////////////////////////////////
 
-  async function handleSubmit(evt) {
-    evt.preventDefault();
-    console.log(formData);
-    findPlace()
-  }
-
-  // function handleChange(evt) {
-  //   console.log(originRef.current.value)
-
-  //   setFormData({ ...formData, [evt.target.name]: evt.target.value, name: originRef.current.value });
-  //   // setFormData({  note: Autocomplete.getPlace() });
+  // async function handleSubmit(evt) {
+  //   evt.preventDefault();
   //   console.log(formData);
-
+  //   findPlace()
   // }
 
 
@@ -181,6 +161,7 @@ setTimeout(() => {
           name="tripId"
           value={tripMode}
           onChange={tripModeChange}
+          // defaultValue = "DRIVING"
           className="w-60 h-8 border-[2px] border-black rounded-md col-start-2 col-end-3"
           
         >
