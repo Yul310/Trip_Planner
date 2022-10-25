@@ -51,7 +51,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
   })
   if (!isLoaded) return <div>Loading...</div>;
 
-
+//
 
   //////////////////////////////////////
   /////  Google API Functions    ///////
