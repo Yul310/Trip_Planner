@@ -11,7 +11,7 @@ Happy planning!
 
 
 ## Getting started:
-[Link to the APP](https://tripnote.herokuapp.com//)
+[Link to the APP](https://tripplan-tiqk.onrender.com/)
 
 [Link to Trello board](https://trello.com/b/5EkXJrqq/sei-59project-04)
 
