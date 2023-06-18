@@ -91,15 +91,15 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
             />
 
-            <ul className="flex flex-row items-center justify-between  " >
+            <ul className="flex flex-row items-center justify-between h-full " >
 
 
                 {thePlaces.map((p, idx) => (
                     <>
-                        <li >
+                        <li className="h-full">
                             <div
 
-                                className="border-black border-[2px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-white"
+                                className="flex flex-col h-100 content-between items-center border-black border-[2px] rounded-md pt-2 pb-4  font-light  w-[13rem] text-left text-sm bg-white"
                                 id="hardshadow"
                             >
                                 <h3 id="subtitle" className="font-bold text-lg text-black">{p.name.split(',')[0]}</h3>
