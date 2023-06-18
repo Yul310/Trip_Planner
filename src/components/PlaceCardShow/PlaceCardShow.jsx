@@ -96,7 +96,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
                 {thePlaces.map((p, idx) => (
                     <>
-                        <div
+                    <ul>
+                        <li
 
                             className="border-black border-[2px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-white"
                             id="hardshadow"
@@ -113,7 +114,8 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                                 <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-black w-500 h-50 border-[2px]"> Delete</button>
                             </div>
 
-                        </div>
+                        </li>
+                        </ul>
 
                         {distance[idx] ?
                             <div className=" flex-column w-80 h-30 ">
