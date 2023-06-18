@@ -19,7 +19,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     const { id } = useParams();
 
 
-    
+
     async function deletePlace(evt) {
 
         const thePlace = allPlaces.filter((place) => place._id !== evt.target.value);
@@ -47,14 +47,14 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     // //////////////////////////////////////////////////////////////////////////////////
     // I tested useEffect and setTimeout to see if those would help to update the props
     /////////////////////////////////////////////////////////////////////////////////////
-    
+
     useEffect(() => {
         setTimeout(() => {
             const trip = allTrips.filter((trip) => trip._id === id);
             console.log(trip[0])
             setTheTrip(trip[0])
         }, 1000)
-    }, [updated, theTrip, allTrips, allPlaces,id,updateMap])
+    }, [updated, theTrip, allTrips, allPlaces, id, updateMap])
 
 
     useEffect(() => {
@@ -63,7 +63,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             console.log(trip[0].place)
             setThePlaces(trip[0].place)
         }, 1000)
-    }, [updated, thePlaces, allTrips, allPlaces,id,updateMap])
+    }, [updated, thePlaces, allTrips, allPlaces, id, updateMap])
 
 
 
@@ -88,34 +88,34 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                 thePlaces={thePlaces}
                 updateMap={updateMap}
                 setUpdateMap={setUpdateMap}
-              
+
             />
-           
-            <div className="flex flex-row items-center" >
+
+            <ul className="flex flex-row items-center justify-between  " >
 
 
                 {thePlaces.map((p, idx) => (
                     <>
-                    <ul>
-                        <li
+                        <li >
+                            <div
 
-                            className="border-black border-[2px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-white"
-                            id="hardshadow"
-                        >
-                            <h3 id="subtitle" className="font-bold text-lg text-black">{p.name.split(',')[0]}</h3>
-                            <h3 className="font-bold text-[#4C5454]">Staying for: </h3>
-                            {p.staying ? <p className="font-light text-sm text-black" >{p.staying}</p> : <p className="font-light text-sm text-black"  >No information yet</p>}
+                                className="border-black border-[2px] rounded-md pt-2 pb-4 px-4 font-light my-3 w-[13rem] h-98 text-left text-sm bg-white"
+                                id="hardshadow"
+                            >
+                                <h3 id="subtitle" className="font-bold text-lg text-black">{p.name.split(',')[0]}</h3>
+                                <h3 className="font-bold text-[#4C5454]">Staying for: </h3>
+                                {p.staying ? <p className="font-light text-sm text-black" >{p.staying}</p> : <p className="font-light text-sm text-black"  >No information yet</p>}
 
-                            <h3 className="font-bold text-[#4C5454] my-px">Note: </h3>
-                            {p.note ? <p className="font-light text-sm text-black mb-3">{p.note}</p> : <p className="font-light text-sm text-black mb-3"  >No note yet</p>}
-                            <div className="flex flex-row w-500 h-200">
-                                <Link to={`/trips/editPlace/${p._id}`}  > <button className="font-bold text-sm text-black w-200 h-50 border-[2px]">Edit </button> </Link>
-                                <p>&nbsp;</p>
-                                <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-black w-500 h-50 border-[2px]"> Delete</button>
+                                <h3 className="font-bold text-[#4C5454] my-px">Note: </h3>
+                                {p.note ? <p className="font-light text-sm text-black mb-3">{p.note}</p> : <p className="font-light text-sm text-black mb-3"  >No note yet</p>}
+                                <div className="flex flex-row w-500 h-200">
+                                    <Link to={`/trips/editPlace/${p._id}`}  > <button className="font-bold text-sm text-black w-200 h-50 border-[2px]">Edit </button> </Link>
+                                    <p>&nbsp;</p>
+                                    <button onClick={deletePlace} value={p._id} className="font-bold text-sm text-black w-500 h-50 border-[2px]"> Delete</button>
+                                </div>
+
                             </div>
-
                         </li>
-                        </ul>
 
                         {distance[idx] ?
                             <div className=" flex-column w-80 h-30 ">
@@ -137,7 +137,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
 
 
-            </div>
+            </ul>
 
         </div>
     );
