@@ -87,7 +87,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
     setUpdated(!updated)
     //Temporay Debugging Method
     window.location.reload(true);
-
+    ///////*** I'd like to import and use Redux to solve this bug.***////////
 
     // const places = await placeAPI.getAll();
     // setNewPlace(places);
