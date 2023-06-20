@@ -71,7 +71,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
     // let before = allPlaces.length
     // console.log(allPlaces.length)
 
-    let arrLeng = allPlaces.length
+
 
     setUpdated(!updated)
     const directionsService = new window.google.maps.DirectionsService()
@@ -84,7 +84,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // console.log(theData)
     placeAPI.newPlace(theData)
-
+    setUpdated(!updated)
     //Temporay Debugging Method
     window.location.reload(true);
 
