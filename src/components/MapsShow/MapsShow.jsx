@@ -21,8 +21,18 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [newPlace, setNewPlace] = useState([])
+  const [eTrip, setETrip] = useState([])
 
 
+
+
+
+
+  useEffect(() => {
+    if (theTrip) {
+      setETrip(theTrip)
+    }
+  }, [])
 
 
   const [formData, setFormData] = useState({
@@ -135,10 +145,19 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
       {/* items-center justify-evenly */}
       <div className=" grid grid-cols-6 m-3 col-start-1 col-end-2">
 
-        <div className="flex flex-row" >
-          <h3 id="subtitle" className="font-bold text-xl text-black mt-2 ml-5 drop-shadow-[0_1px_1px_white]"  >{theTrip.title}  </h3>
-          <h3 className="font-bold text-xl text-[black mt-2 ml-5 drop-shadow-[0_1px_1px_white]">{`${theTrip.date}`.split('T')[0]}</h3>
-        </div>
+
+        {theTrip &&
+          <div className="flex flex-row" >
+            <h3 id="subtitle" className="font-bold text-xl text-black mt-2 ml-5 drop-shadow-[0_1px_1px_white]"  >{theTrip.title}  </h3>
+            <h3 className="font-bold text-xl text-[black mt-2 ml-5 drop-shadow-[0_1px_1px_white]">{`${theTrip.date}`.split('T')[0]}</h3>
+          </div>
+        }
+        {theTrip == null &&
+          <div className="flex flex-row" >
+            <h3 id="subtitle" className="font-bold text-xl text-black mt-2 ml-5 drop-shadow-[0_1px_1px_white]"  >{eTrip.title}  </h3>
+            <h3 className="font-bold text-xl text-[black mt-2 ml-5 drop-shadow-[0_1px_1px_white]">{`${eTrip.date}`.split('T')[0]}</h3>
+          </div>}
+
 
         <select
           name="tripId"
@@ -175,7 +194,7 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
         <div className=" col-start-5" >
 
-          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#AAEFDF] text-black border-[2px] "  >Add Destinationddd</button>
+          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#AAEFDF] text-black border-[2px] "  >Add Destination</button>
 
         </div>
         {/* <Autocomplete className="m-0 p-0">
