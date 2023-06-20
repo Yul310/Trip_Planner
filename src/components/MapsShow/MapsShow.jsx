@@ -16,7 +16,7 @@ const containerStyle = {
 const google = window.google
 
 
-export default function Map({ allPlaces, distance, setDistance, duration, setDuration, theTrip, thePlaces }) {
+export default function Map({ allPlaces, distance, setDistance, duration, setDuration, theTrip, thePlaces, updated, setUpdated }) {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
