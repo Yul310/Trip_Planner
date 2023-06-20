@@ -53,6 +53,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             const trip = allTrips.filter((trip) => trip._id === id);
             console.log(trip[0])
             setTheTrip(trip[0])
+            setThePlaces(trip[0].place)
         }, 1000)
     }, [updated, theTrip, allTrips, allPlaces, id, updateMap])
 
@@ -63,7 +64,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
             console.log(trip[0].place)
             setThePlaces(trip[0].place)
         }, 1000)
-    }, [updated, thePlaces, allTrips, allPlaces, id, updateMap])
+    }, [updated, thePlaces, allTrips, theTrip, id, updateMap])
 
 
 
@@ -71,7 +72,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
     return (
 
-        <div className="">
+        <>
             <MapsShow
 
                 allPlaces={allPlaces}
@@ -96,7 +97,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
                     {thePlaces.map((p, idx) => (
                         <>
-                            <li className="h-full w-[13rem] ">
+                            <li className="h-full w-max ">
                                 <div
 
                                     className="flex flex-col h-100 content-between items-center border-black border-[2px] rounded-md pt-2 pb-4  font-light  text-left text-sm bg-white"
@@ -139,7 +140,9 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
                 </ul>
             </div>
-        </div>
+        </>
+
     );
 }
+
 //
