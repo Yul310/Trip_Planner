@@ -73,7 +73,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
 
     let arrLeng = allPlaces.length
 
-    // setUpdated(!updated)
+    setUpdated(!updated)
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
