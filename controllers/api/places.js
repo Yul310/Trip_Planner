@@ -11,6 +11,7 @@ module.exports = {
 
 };
 
+
 async function index(req, res) {
   try {
     console.log("place index controller!!!")
@@ -40,12 +41,13 @@ async function create(req, res) {
 
     theOne.save()
     
+   
     // console.log(theOne)
     // await placeList.save();
    
-    console.log(placeList)
+    console.log("backend place list",placeList)
   
-    res.json(placeList);
+    // res.json(placeList);
   } catch (e) {
     res.status(400).json(e)
   }

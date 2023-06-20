@@ -5,6 +5,7 @@ const BASE_URL = "/api/places";
 
 export function getAll() {
     return sendRequest(BASE_URL);
+    
   }
 
 // create a new trip

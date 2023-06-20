@@ -22,6 +22,7 @@ export default function App() {
   const [allTrips, setAllTrips] = useState([]);
   const [allPlaces, setAllPlaces] = useState([]);
   const [updated, setUpdated] = useState(false);
+  const [unique, setUnique] = useState(false);
 
 
 
@@ -33,7 +34,7 @@ export default function App() {
       async function getTrips() {
         const trips = await tripAPI.getAll();
         setAllTrips(trips);
-        console.log(trips);
+        console.log("app trip update", trips);
       }
       getTrips();
     },
@@ -41,20 +42,46 @@ export default function App() {
   );
 
 
-  /////////////////   
+  ///////////////   
   // Get All Trips
-  /////////////////
+  ///////////////
   useEffect(
     function () {
       async function getPlaces() {
         const places = await placeAPI.getAll();
         setAllPlaces(places);
-        console.log(places);
+        console.log("app place update", places);
       }
       getPlaces();
     },
     [updated]
   );
+
+  /////////////////   
+  // Get updated Trips
+  /////////////////
+  // useEffect(
+  //   function () {
+  //     async function getPlaces() {
+  //       let existLength = allPlaces.length
+  //       const places = await placeAPI.getAll();
+  //       setAllPlaces(places);
+  //       console.log("test 11", allPlaces)
+  //       console.log("test 11", existLength)
+  //       console.log("test 22", places.length)
+  //       while (places.length != existLength + 1) {
+  //         const neoplaces = await placeAPI.getAll();
+  //         console.log(neoplaces.length)
+  //         setAllPlaces(neoplaces);
+  //       }
+  //       setAllPlaces(places);
+  //       console.log("app place update", places);
+  //     }
+  //     getPlaces();
+  //   },
+  //   [updated]
+  // );
+
 
 
 
@@ -72,12 +99,12 @@ export default function App() {
 
 
 
-            <Route path="/" element={<HomePage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user}/>} />
+            <Route path="/" element={<HomePage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user} />} />
 
 
             <Route path="/trips/new" element={<NewTripPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} />} />
 
-            <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user}/>} />
+            <Route path="/trips" element={<TripIndexPage allTrips={allTrips} setAllTrips={setAllTrips} setUpdated={setUpdated} updated={updated} user={user} />} />
 
             <Route path="/trips/showTrip/:id" element={<TripShowPage updated={updated} setUpdated={setUpdated} allPlaces={allPlaces} setAllPlaces={setAllPlaces}
               allTrips={allTrips}
@@ -87,7 +114,7 @@ export default function App() {
               allTrips={allTrips}
               setAllTrips={setAllTrips} />} />
 
-         
+
 
           </Routes>
         </div>

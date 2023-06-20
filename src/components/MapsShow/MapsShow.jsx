@@ -16,24 +16,19 @@ const containerStyle = {
 const google = window.google
 
 
-export default function Map({ allPlaces, updated, setUpdated, distance, setDistance, duration, setDuration, allTrips, theTrip, thePlaces, updateMap, setUpdateMap, setAllTrips }) {
+export default function Map({ allPlaces, distance, setDistance, duration, setDuration, theTrip, thePlaces }) {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
-  const [newPlace, setNewPlace] = useState([])
+
+  //below prop and function are used to fix the page refresh bug.
   const [eTrip, setETrip] = useState([])
-
-
-
-
-
-
   useEffect(() => {
     if (theTrip) {
       setETrip(theTrip)
     }
   }, [])
-
+  ////////////////////
 
   const [formData, setFormData] = useState({
     name: "",
@@ -55,12 +50,12 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
   const API_KEY = process.env.REACT_APP_MAPS_API_KEY
 
-
+  const libraries = ['places'];
 
   const { isLoaded } = useLoadScript({
 
     googleMapsApiKey: API_KEY,
-    libraries: ['places'],
+    libraries: libraries,
 
   })
   if (!isLoaded) return <div>Loading...</div>;
@@ -73,7 +68,12 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
 
 
   async function findPlace() {
-    setUpdated(!updated)
+    // let before = allPlaces.length
+    // console.log(allPlaces.length)
+
+    let arrLeng = allPlaces.length
+
+    // setUpdated(!updated)
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -84,15 +84,24 @@ export default function Map({ allPlaces, updated, setUpdated, distance, setDista
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // console.log(theData)
     placeAPI.newPlace(theData)
-    setUpdated(!updated)
-    originRef.current.value = ''
-    setTimeout(() => {
-      bugFix()
-    }, 1000)
-  }
 
-  function bugFix() {
-    findPlace()
+    //Temporay Debugging Method
+    window.location.reload(true);
+
+
+    // const places = await placeAPI.getAll();
+    // setNewPlace(places);
+
+    // setUpdated(!updated)
+
+    // if (allPlaces.length == before) {
+    //   console.log("noupdate", allPlaces.length)
+    //   findPlace()
+
+    // }
+
+    originRef.current.value = ''
+
   }
 
 

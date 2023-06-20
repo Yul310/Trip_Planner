@@ -97,7 +97,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
                     {thePlaces.map((p, idx) => (
                         <>
-                            <li className="h-full w-max ">
+                            <li className="h-full w-max " key={idx}>
                                 <div
 
                                     className="flex flex-col h-100 content-between items-center border-black border-[2px] rounded-md pt-2 pb-4  font-light  text-left text-sm bg-white"
