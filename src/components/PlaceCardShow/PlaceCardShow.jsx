@@ -51,7 +51,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     useEffect(() => {
         setTimeout(() => {
             const trip = allTrips.filter((trip) => trip._id === id);
-            console.log(trip[0])
+            console.log("placecardshow", trip[0])
             setTheTrip(trip[0])
             setThePlaces(trip[0].place)
         }, 1000)
@@ -61,10 +61,12 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     useEffect(() => {
         setTimeout(() => {
             const trip = allTrips.filter((trip) => trip._id === id);
-            console.log(trip[0].place)
-            setThePlaces(trip[0].place)
+            console.log("placecardshow2", trip[0].place)
+            // const thePlace = allPlaces.filter((place) => place.tripId === id);
+            // setThePlaces(thePlace)
+            // console.log(thePlaces)
         }, 1000)
-    }, [updated, thePlaces, allTrips, theTrip, id, updateMap])
+    }, [updated, allTrips, theTrip, id, updateMap])
 
 
 
@@ -89,6 +91,7 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
                 thePlaces={thePlaces}
                 updateMap={updateMap}
                 setUpdateMap={setUpdateMap}
+                setTheTrip={setTheTrip}
 
             />
             <div className="mt-10">

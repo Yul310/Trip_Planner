@@ -46,7 +46,7 @@ async function create(req, res) {
     // await placeList.save();
    
     console.log("backend place list",placeList)
-  
+    res.json(placeList);
     // res.json(placeList);
   } catch (e) {
     res.status(400).json(e)

@@ -16,7 +16,7 @@ const containerStyle = {
 const google = window.google
 
 
-export default function Map({ allPlaces, distance, setDistance, duration, setDuration, theTrip, thePlaces, updated, setUpdated }) {
+export default function Map({ allPlaces, setAllPlaces, distance, setDistance, duration, setDuration, theTrip, thePlaces, updated, setUpdated, setAllTrips }) {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
@@ -73,7 +73,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
 
 
 
-    setUpdated(!updated)
+    // setUpdated(!updated)
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
@@ -83,10 +83,14 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
     // console.log(results.request.origin.query)
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // console.log(theData)
-    placeAPI.newPlace(theData)
-    setUpdated(!updated)
+    await placeAPI.newPlace(theData).then(
+      tripAPI.getAll()).then(
+        console.log("updated")).then(
+          setAllTrips(tripAPI.getAll())).then(
+            setUpdated(!updated))
+    // setUpdated(!updated)
     //Temporay Debugging Method
-    window.location.reload(true);
+    // window.location.reload(true);
     ///////*** I'd like to import and use Redux to solve this bug.***////////
 
     // const places = await placeAPI.getAll();

@@ -57,13 +57,13 @@ export default function App() {
     [updated]
   );
 
-  /////////////////   
-  // Get updated Trips
-  /////////////////
+  ///////////////   
+  //// Get updated Places
+  ///////////////
   // useEffect(
   //   function () {
-  //     async function getPlaces() {
-  //       let existLength = allPlaces.length
+  //     async function createAndGetPlaces() {
+
   //       const places = await placeAPI.getAll();
   //       setAllPlaces(places);
   //       console.log("test 11", allPlaces)
