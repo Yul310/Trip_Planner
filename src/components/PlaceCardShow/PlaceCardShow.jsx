@@ -97,10 +97,10 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
 
                     {thePlaces.map((p, idx) => (
                         <>
-                            <li className="h-full w-max " key={p._id}>
+                            <li className="h-full w-max drop-shadow-[0_5px_5px_black]" key={p._id}>
                                 <div
 
-                                    className="flex flex-col h-100 content-between items-center border-black border-[2px] rounded-md pt-2 pb-4  font-light  text-left text-sm bg-white px-3"
+                                    className="flex flex-col h-100 content-between items-center rounded-md pt-2 pb-4  font-light  text-left text-sm bg-white px-3"
                                     id="hardshadow"
                                 >
                                     <h3 id="subtitle" className="font-bold text-lg text-black">{p.name.split(',')[0]}</h3>

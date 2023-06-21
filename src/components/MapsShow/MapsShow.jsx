@@ -142,6 +142,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
     console.log(e.target.value)
     console.log(tripMode)
     e.target.value = ""
+
   }
 
 
@@ -173,7 +174,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
           value={tripMode}
           onChange={tripModeChange}
           // defaultValue = "DRIVING"
-          className="w-60 h-8 border-[2px] border-black rounded-md col-start-2 col-end-3"
+          className="w-60 h-8 rounded-md col-start-2 col-end-3 drop-shadow-[0_5px_5px_black]"
 
         >
           <option >Select a trip mode</option>
@@ -191,7 +192,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
 
 
         <Autocomplete className=" col-start-3 col-end-5" >
-          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8 border-[2px] rounded-md" name="name" />
+          <input type="text" placeholder='Search place here' ref={originRef} className="w-60 h-8 border-[0px] drop-shadow-[0_5px_5px_black] rounded-md" name="name" />
         </Autocomplete>
 
 
@@ -203,7 +204,7 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
 
         <div className=" col-start-5" >
 
-          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#AAEFDF] text-black border-[2px] "  >Add Destination</button>
+          <button type="submit" onClick={findPlace} className="w-36 h-8 bg-[#AAEFDF] text-black border-[0px] drop-shadow-[0_5px_5px_black] "  >Add Destination</button>
 
         </div>
         {/* <Autocomplete className="m-0 p-0">
@@ -211,36 +212,37 @@ export default function Map({ allPlaces, distance, setDistance, duration, setDur
         </Autocomplete> */}
 
         <div className=" col-start-6" >
-          <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-[#AAEFDF] col-start-6 text-black border-[2px]" >ShowRoute</button>
+          <button type="submit" onClick={calculateAllRoute} className="w-36 h-8 bg-[#AAEFDF] col-start-6 text-black border-[0px] drop-shadow-[0_5px_5px_black]" >ShowRoute</button>
         </div>
       </div>
 
 
+      <div className="drop-shadow-[0_5px_5px_black]">
+        < GoogleMap
+          center={currentLocation}
+          zoom={15}
+          mapContainerStyle={containerStyle}
+          options={{
+            styles: MapStyles,
+            zoomControl: false,
+            mapTypeControl: false,
+            scaleControl: false,
+            streetViewControl: false,
+            fullscreenControl: false,
+          }}
+          onLoad={(map) => setMap(map)}
 
-      < GoogleMap
-        center={currentLocation}
-        zoom={15}
-        mapContainerStyle={containerStyle}
-        options={{
-          styles: MapStyles,
-          zoomControl: false,
-          mapTypeControl: false,
-          scaleControl: false,
-          streetViewControl: false,
-          fullscreenControl: false,
-        }}
-        onLoad={(map) => setMap(map)}
-      >
+        >
 
-        <MarkerF
-          position={currentLocation}
-        />
-        {directionsResponse && (
-          <DirectionsRenderer directions={directionsResponse} />
-        )}
+          <MarkerF
+            position={currentLocation}
+          />
+          {directionsResponse && (
+            <DirectionsRenderer directions={directionsResponse} />
+          )}
 
-      </GoogleMap>
-
+        </GoogleMap>
+      </div>
 
 
     </>
