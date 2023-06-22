@@ -80,12 +80,10 @@ export default function Map({ allPlaces, setAllPlaces, distance, setDistance, du
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // console.log(theData)
 
-    //***Below codes need to be improved. Everything before seupdated(!updated) is just to solve backend time lagging bug between findall and create. **//
+    //***Below codes need to be improved. Everything before seupdated(!updated) is just to delay the last state update function to solve backend time lagging bug between findall and create. **//
     await placeAPI.newPlace(theData).then(
-      tripAPI.getAll()).then(
-        console.log("updated")).then(
-          setAllTrips(tripAPI.getAll())).then(
-            setUpdated(!updated))
+      tripAPI.getAll()).then(console.log("updated")).then(setAllTrips(tripAPI.getAll())).then(
+        setUpdated(!updated))
 
 
     /////////////////////////////
