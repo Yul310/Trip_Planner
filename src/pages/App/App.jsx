@@ -16,6 +16,7 @@ import * as tripAPI from "../../utilities/trips-api";
 import * as placeAPI from "../../utilities/places-api";
 
 
+
 export default function App() {
 
   const [user, setUser] = useState(getUser());
@@ -57,30 +58,6 @@ export default function App() {
     [updated]
   );
 
-  ///////////////   
-  //// Get updated Places
-  ///////////////
-  // useEffect(
-  //   function () {
-  //     async function createAndGetPlaces() {
-
-  //       const places = await placeAPI.getAll();
-  //       setAllPlaces(places);
-  //       console.log("test 11", allPlaces)
-  //       console.log("test 11", existLength)
-  //       console.log("test 22", places.length)
-  //       while (places.length != existLength + 1) {
-  //         const neoplaces = await placeAPI.getAll();
-  //         console.log(neoplaces.length)
-  //         setAllPlaces(neoplaces);
-  //       }
-  //       setAllPlaces(places);
-  //       console.log("app place update", places);
-  //     }
-  //     getPlaces();
-  //   },
-  //   [updated]
-  // );
 
 
 

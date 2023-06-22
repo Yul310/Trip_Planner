@@ -5,6 +5,7 @@ import "./Map.css"
 import MapStyles from './MapStyles'
 import * as placeAPI from "../../utilities/places-api";
 import * as tripAPI from "../../utilities/trips-api";
+
 // import * as destinationAPI from "../../utilities/destinations-api";
 
 
@@ -68,11 +69,6 @@ export default function Map({ allPlaces, setAllPlaces, distance, setDistance, du
 
 
   async function findPlace() {
-    // let before = allPlaces.length
-    // console.log(allPlaces.length)
-
-
-
     // setUpdated(!updated)
     const directionsService = new window.google.maps.DirectionsService()
     const results = await directionsService.route({
@@ -83,26 +79,22 @@ export default function Map({ allPlaces, setAllPlaces, distance, setDistance, du
     // console.log(results.request.origin.query)
     const theData = { name: results.request.origin.query, tripId: theTrip._id, staying: "", note: "" }
     // console.log(theData)
+
+    //***Below codes need to be improved. Everything before seupdated(!updated) is just to solve backend time lagging bug between findall and create. **//
     await placeAPI.newPlace(theData).then(
       tripAPI.getAll()).then(
         console.log("updated")).then(
           setAllTrips(tripAPI.getAll())).then(
             setUpdated(!updated))
-    // setUpdated(!updated)
+
+
+    /////////////////////////////
     //Temporay Debugging Method
+    /////////////////////////////
     // window.location.reload(true);
     ///////*** I'd like to import and use Redux to solve this bug.***////////
 
-    // const places = await placeAPI.getAll();
-    // setNewPlace(places);
 
-    // setUpdated(!updated)
-
-    // if (allPlaces.length == before) {
-    //   console.log("noupdate", allPlaces.length)
-    //   findPlace()
-
-    // }
 
     originRef.current.value = ''
 
