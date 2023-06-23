@@ -12,7 +12,7 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
   const { id } = useParams();
 
   const thePlace = allPlaces.filter((place) => place._id === id);
-  const memory = thePlace[0].tripId
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,17 +24,20 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
 
   async function deletePlace(evt) {
 
-    console.log("delete working????")
-    let path = `/trips/showTrip/${memory}`
-    navigate(path)
+
 
     const places = allPlaces.filter((place) => place._id !== evt.target.value);
     //  console.log(thePlace);
 
     setAllPlaces(places);
 
-    await placeAPI.deletePlace(evt.target.value);
+    await placeAPI.deletePlace(evt.target.value)
+    console.log("delete working????")
+
     setUpdated(!updated)
+
+
+
 
 
   }
@@ -55,6 +58,7 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
     placeAPI.editPlace(evt.target.value, formData);
     redirectToTrip();
     setUpdated(!updated)
+
 
 
   }
@@ -124,8 +128,8 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
         <button onClick={editPlace} value={thePlace[0]._id} className="font-bold text-sm"> Save </button>
         <button onClick={redirectToTripShow} value={thePlace[0]._id} className="font-bold text-sm"> Cancel  </button>
 
-        <p>&nbsp;</p>
-        <button onClick={deletePlace} value={id} className="font-bold text-sm"> Delete Place </button>
+        {/* <p>&nbsp;</p> */}
+        {/* <button onClick={deletePlace} value={id} className="font-bold text-sm"> Delete Place </button> */}
 
       </div>
 
