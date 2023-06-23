@@ -40,10 +40,10 @@ async function create(req, res) {
     theOne.place.push(newPlace._id)
 
     theOne.save()
-    
+    // placeList.save()
    
     // console.log(theOne)
-    // await placeList.save();
+    
    
     console.log("backend place list",placeList)
     res.json(placeList);

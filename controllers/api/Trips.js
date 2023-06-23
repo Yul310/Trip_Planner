@@ -23,7 +23,7 @@ async function index(req, res) {
 
 
 
-// create new todos
+// create new trip
 async function create(req, res) {
     console.log("Trip create Controller 1")
   try {

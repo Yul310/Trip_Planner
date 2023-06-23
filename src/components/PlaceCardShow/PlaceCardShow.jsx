@@ -58,17 +58,6 @@ export default function PlaceCardShow({ allPlaces, setAllPlaces, setUpdated, upd
     }, [updated, theTrip, allTrips, allPlaces, id, updateMap])
 
 
-    useEffect(() => {
-        setTimeout(() => {
-            const trip = allTrips.filter((trip) => trip._id === id);
-            console.log("placecardshow2", trip[0].place)
-            // const thePlace = allPlaces.filter((place) => place.tripId === id);
-            // setThePlaces(thePlace)
-            // console.log(thePlaces)
-        }, 1000)
-    }, [updated, allTrips, theTrip, id, updateMap])
-
-
 
 
 
