@@ -28,17 +28,10 @@ export default function PlaceEditPage({ allPlaces, setAllPlaces, distance, durat
 
     const places = allPlaces.filter((place) => place._id !== evt.target.value);
     //  console.log(thePlace);
-
     setAllPlaces(places);
-
     await placeAPI.deletePlace(evt.target.value)
     console.log("delete working????")
-
     setUpdated(!updated)
-
-
-
-
 
   }
 
